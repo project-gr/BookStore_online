@@ -16,6 +16,7 @@ import java.sql.ResultSet;
  * @author Ren
  */
 public class StaffDAO {
+    DBcontext db = DBcontext.getInstance();
     Connection conn = null; // access to sql server 
     PreparedStatement ps = null; // ném query từ netbean qua sql server
     ResultSet rs = null;
@@ -23,7 +24,7 @@ public class StaffDAO {
     public StaffBean checklogin (String Staff_username, String Staff_password){
         try {
             String query = "select * from Staff where Staff_username = ? and Staff_password = ?";
-            conn = new DBcontext().getConnection();
+            conn = db.getConnection();
             ps = conn.prepareStatement(query);
             
             ps.setString(1, Staff_username); // truyền username vô dấu '?' thứ nhất
