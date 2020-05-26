@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title> Home page </title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <style></style>
+    </head>
+    <body>
+
+        <ul class="topnav" id="myTopnav">
+            <a href="#home" class="active">Home</a>
+            
+            <a style="float: right" href="#Signout"> Sign out </a>
+            
+            <div class="dropdown-right">
+                <button class="dropbtn"> Sign in
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a href="StaffLogin.jsp"> Staff Login</a>
+                    <a href="CustomerLogin.jsp"> Customer Login</a>
+                </div>
+            </div> 
+            
+            <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
+        </ul>
+        
+        <p>
+            1 <br>
+            2 <br>
+            3 <br>
+            4 <br>
+            5 <br>
+            6 <br>
+            7 <br>
+            8 <br>
+            9 <br>
+            10 <br>
+            11 <br>
+            12 <br>
+            13 <br>
+            14 <br>
+            15 <br>
+        </p>
+
+        <script>
+            function myFunction() {
+                var x = document.getElementById("myTopnav");
+                if (x.className === "topnav") {
+                    x.className += " responsive";
+                } else {
+                    x.className = "topnav";
+                }
+            }
+        </script>
+
+    </body>
+</html>
