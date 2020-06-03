@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author Ren
  */
 @WebServlet(name = "LoginControl", urlPatterns = {"/LoginControl"})
-public class LoginControl extends HttpServlet {
+public class LoginController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
