@@ -6,7 +6,6 @@
 package dao;
 
 import bean.BookBean;
-import bean.BooksList;
 import context.DBcontext;
 import java.sql.Connection;
 import java.sql.PreparedStatement;

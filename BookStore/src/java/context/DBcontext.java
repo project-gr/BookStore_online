@@ -23,8 +23,6 @@ public class DBcontext {
     private static final String password = "sa";
     private static Connection connection = null;
 
-    /*USE BELOW METHOD FOR YOUR DATABASE CONNECTION FOR BOTH SINGLE AND MULTILPE SQL SERVER INSTANCE(s)*/
- /*DO NOT EDIT THE BELOW METHOD, YOU MUST USE ONLY THIS ONE FOR YOUR DATABASE CONNECTION*/
     public static Connection getConnection() throws Exception {
         if (connection != null) {
             return connection;
@@ -34,8 +32,5 @@ public class DBcontext {
             connection = DriverManager.getConnection(url, userID, password);
             return connection;
         }
-//        String url = "jdbc:sqlserver://" + serverName + ":" + portNumber + ";databaseName=" + dbName;
-//        Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-//        connection = DriverManager.getConnection(url, userID, password);
     }
 }
