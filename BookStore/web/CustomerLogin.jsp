@@ -21,7 +21,7 @@
         <center><h1> Book Store Online </h1></center>
         <hr>
 
-        <form method="post" action="LoginControl?action=Cus">
+        <form method="post" action="LoginController?action=Cus">
             <ol type="circle">
                 
                 <center>

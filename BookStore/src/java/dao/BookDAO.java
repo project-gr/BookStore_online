@@ -24,7 +24,7 @@ public class BookDAO implements DAO{
     static ResultSet rs = null;
     
     @Override
-    public List<BookBean> get() {
+    public List<BookBean> getList() {
         List<BookBean> bookList = null;
         BookBean bookBean = null;
         
@@ -54,16 +54,18 @@ public class BookDAO implements DAO{
     }
 
     @Override
-    public BookBean getBook(String Book_ID) {
+    public List<BookBean> getElement(String Book_Name) {
+        List<BookBean> bookList = null;
         BookBean bookBean = null;
         
         try {
+            bookList= new ArrayList<BookBean>();
             bookBean = new BookBean();
-            String query = "select * from Books where Book_ID =?";
+            String query = "select * from Books where Book_Name =?";
             conn = DBcontext.getConnection();
             ps = conn.prepareStatement(query);
             
-            ps.setString(1, Book_ID);
+            ps.setString(1, Book_Name);
             
             rs = ps.executeQuery();
             
@@ -76,11 +78,13 @@ public class BookDAO implements DAO{
                 bookBean.setPrice(rs.getFloat(5));
                 bookBean.setDiscount(rs.getFloat(6));
                 bookBean.setQuantity(rs.getInt(7));
+                
+                bookList.add(bookBean);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return bookBean;
+        return bookList;
     }
 
 
