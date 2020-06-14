@@ -26,7 +26,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author ADMIN
  */
-@WebServlet(name = "CheckLogin", urlPatterns = {"/CheckLogin"})
+@WebServlet(name = "LoginControl", urlPatterns = {"/LoginControl"})
 public class LoginControl extends HttpServlet {
 
     /**
@@ -46,7 +46,7 @@ public class LoginControl extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
+
         try (PrintWriter out = response.getWriter()) {
 
             String username = request.getParameter("username");
@@ -68,7 +68,7 @@ public class LoginControl extends HttpServlet {
             }
         } catch (Exception e) {
         }
-}
+    }
 
 // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
 /**

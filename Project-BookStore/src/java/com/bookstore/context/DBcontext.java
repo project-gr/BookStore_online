@@ -7,6 +7,7 @@ package com.bookstore.context;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.util.ArrayList;
 
 /**
  *
@@ -20,6 +21,8 @@ public class DBcontext {
     private static final String password = "sa";
     private static Connection connection = null;
     
+    static ArrayList<Connection> connList = new ArrayList<>();
+    
     public static Connection getConnection() throws Exception {
         if (connection != null) {
             return connection;
@@ -29,5 +32,9 @@ public class DBcontext {
             connection = DriverManager.getConnection(url, userID, password);
             return connection;
         }
+    }
+    
+    public static void returnConnection(Connection connection) throws Exception {
+        connList.add(connection);
     }
 }

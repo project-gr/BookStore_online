@@ -9,6 +9,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -20,6 +22,31 @@ public class BookDAO implements DAO<BookBean> {
     static PreparedStatement ps = null; // ném query từ netbean qua sql server
     static ResultSet rs = null;
 
+    public BookBean selectBook(String isbn) throws Exception {
+            BookBean book = new BookBean();
+        try {
+            String query = "select * from books where isbn =?";
+
+            conn = DBcontext.getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, isbn);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                book.setIsbn(rs.getString(1));
+                book.setTitle(rs.getString(2));
+                book.setPrice(rs.getFloat(3));
+                book.setPublisher(rs.getString(4));
+                book.setInventory(rs.getInt(5));
+                book.setDescription(rs.getString(6));
+                book.setCoverImage(rs.getString(7));
+
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(BookDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return book;
+    }
+
     @Override
     public List<BookBean> getList() {
         List<BookBean> bookList = null;
@@ -28,6 +55,7 @@ public class BookDAO implements DAO<BookBean> {
         try {
             bookList = new ArrayList<BookBean>();
             String query = "select * from books";
+
             conn = DBcontext.getConnection();
             ps = conn.prepareStatement(query);
             rs = ps.executeQuery();
@@ -50,7 +78,6 @@ public class BookDAO implements DAO<BookBean> {
         return bookList;
     }
 
-
     @Override
     public List<BookBean> getElement(String title) {
         List<BookBean> bookList = null;
@@ -59,7 +86,7 @@ public class BookDAO implements DAO<BookBean> {
         try {
             bookList = new ArrayList<BookBean>();
             bookBean = new BookBean();
-            String query = "select * from Books where title =?";
+            String query = "select * from books where title =?";
             conn = DBcontext.getConnection();
             ps = conn.prepareStatement(query);
 

@@ -7,7 +7,6 @@
 <%@page import="com.bookstore.dao.UserDAO"%>
 <%@page import="com.bookstore.bean.UserBean"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ page import="com.bookstore.bean.UserBean" %>
 <!DOCTYPE html>
 <html>
     <head>

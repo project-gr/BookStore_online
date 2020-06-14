@@ -81,6 +81,14 @@ public final class Home_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
       out.write("        <title>Book Store</title>\n");
       out.write("        <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css\">\n");
+      out.write("        \n");
+      out.write("        <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js\"></script>\n");
+      out.write("        <script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js\"></script>\n");
+      out.write("        \n");
+      out.write("        <link rel=\"stylesheet\" href=\"style.css\">\n");
+      out.write("        <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css\">\n");
+      out.write("        <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js\"></script>\n");
+      out.write("        <script src=\"https://kit.fontawesome.com/a076d05399.js\"></script>\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
       out.write("        <nav class=\"navbar navbar-inverse navbar-fixed-top\">\n");
@@ -103,10 +111,6 @@ public final class Home_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                                    <option value=\"Author\"> Author </option>\n");
       out.write("                                    <option value=\"Category\"> Category </option>\n");
       out.write("                                </select> \n");
-      out.write("\n");
-      out.write("                                <button type=\"submit\" name=\"search\" class=\"searchbtn\">\n");
-      out.write("                                    <i class=\"fas fa-search\"></i>\n");
-      out.write("                                </button>\n");
       out.write("                            </div>\n");
       out.write("\n");
       out.write("                        </ol>\n");
@@ -165,7 +169,6 @@ public final class Home_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css\">\n");
       out.write("        <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js\"></script>\n");
       out.write("        <script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js\"></script>\n");
-      out.write("        <script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js\"></script>\n");
       out.write("\n");
       out.write("\n");
       out.write("    </head>\n");
@@ -305,7 +308,8 @@ public final class Home_jsp extends org.apache.jasper.runtime.HttpJspBase
           out.write("                            </a>\n");
           out.write("                        </div>\n");
           out.write("                        <div class=\"col-md-8\" style=\"text-align: left; padding-left:10px;\">\n");
-          out.write("                            <a href=\"BookLookUp?isbn= ");
+          out.write("                           \n");
+          out.write("                            <a href=\".\\BookLookUp?isbn= ");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${book.getIsbn()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
           out.write("\" style=\"max-height: 130px; max-width: 110px;\">\n");
           out.write("                                <h4> ");

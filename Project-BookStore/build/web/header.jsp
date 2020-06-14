@@ -16,6 +16,13 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Book Store</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     </head>
     <body>
         <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -25,23 +32,19 @@
                     <a class="navbar-brand" href="Home.jsp">Hehe Book Store</a>
                 </div>
 
-                <div>
-                    <!--Search Box-->
-                    <form method="post" action="DaoControl">
+                <div id="navbar" class="navbar-collapse collapse">
+                    <form class="navbar-form navbar-left" method="post" action="DaoControl">
+
                         <ol type="circle">
 
                             <div class="searchBox">
-                                <input class="searchBox_input" type="text" name="searchBox" placeholder="Search">
+                                <input class="form-control" name="search-query" id="search-query" size="40" type="text" placeholder="Search">
 
-                                <select class="searchBox_input" name="type">
+                                <select class="form-control" name="type">
                                     <option value="Book"> Book </option>
                                     <option value="Author"> Author </option>
                                     <option value="Category"> Category </option>
                                 </select> 
-
-                                <button type="submit" name="search" class="searchbtn">
-                                    <i class="fas fa-search"></i>
-                                </button>
                             </div>
 
                         </ol>
@@ -49,16 +52,14 @@
 
                     <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Browse<span class="caret"></span></a>
+                            <a href="./Login.jsp" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> <span class="caret"></span>Sign in/Register</a>
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="./Search?search-query=">All</a></li>
-                                    <c:forEach var="row" items="${result.rows}">
-                                    <li><a href="./Search?search-query=${row.category_name}">${row.category_name}</a></li>
-                                    </c:forEach>
+                                <li><a href="./CustomerAccount.jsp">Account</a></li>
+                                <li class="divider"></li>
+                                <li><a href="./logout.jsp">Logout</a></li>
                             </ul>
                         </li>
 
-                        <li><a href="Login.jsp">Sign in/Register</a></li> 
 
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Admin<span class="caret"></span></a>
@@ -68,7 +69,6 @@
                                 <li><a href="./UserLookup">View Users</a></li>
                             </ul>
                         </li>
-
                         <li><a href="./Checkout.jsp">Cart</a></li>
                     </ul>
                 </div>
