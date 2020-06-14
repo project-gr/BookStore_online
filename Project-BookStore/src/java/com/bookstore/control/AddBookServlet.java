@@ -98,14 +98,14 @@ public class AddBookServlet extends HttpServlet {
 
             rs = statement.executeQuery("select author_name from author");
             while (rs.next()) {
-                if (rs.getString("author_name") == null) {
+                if (rs.getString("author_name").equals(author)) {
+                    String query3 = "insert into author_book values('" + author + "','" + isbn + "');";
+                    statement.execute(query3);
+                }
+                else{
                     String query1 = "insert into author values('" + author + "');";
                     statement.execute(query1);
 
-                    String query2 = "insert into author_book values('" + author + "','" + isbn + "');";
-                    statement.execute(query2);
-                }
-                else{
                     String query2 = "insert into author_book values('" + author + "','" + isbn + "');";
                     statement.execute(query2);
                 }

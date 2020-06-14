@@ -294,7 +294,7 @@ public final class Home_jsp extends org.apache.jasper.runtime.HttpJspBase
           out.write("                <div style=\"margin:3px; padding:10px; background-color: #eee;\">\n");
           out.write("                    <div class=\"row\">\n");
           out.write("                        <div class=\"col-md-4\">\n");
-          out.write("                            <a href=\"./BookLookup?isbn= ");
+          out.write("                            <a href=\"BookInformation?isbn= ");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${book.getIsbn()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
           out.write("\" style=\"max-height: 130px; max-width: 110px;\">\n");
           out.write("                                <img src=\"");
@@ -305,9 +305,13 @@ public final class Home_jsp extends org.apache.jasper.runtime.HttpJspBase
           out.write("                            </a>\n");
           out.write("                        </div>\n");
           out.write("                        <div class=\"col-md-8\" style=\"text-align: left; padding-left:10px;\">\n");
-          out.write("                            <h4> ");
+          out.write("                            <a href=\"BookLookUp?isbn= ");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${book.getIsbn()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("\" style=\"max-height: 130px; max-width: 110px;\">\n");
+          out.write("                                <h4> ");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${book.getTitle()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
           out.write(" </h4>\n");
+          out.write("                            </a>\n");
           out.write("                            <h5> ");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${book.getIsbn()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
           out.write(" </h5>\n");
