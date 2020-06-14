@@ -83,7 +83,7 @@ public class UserDAO implements DAO<UserBean>{
         
         try {
             userList= new ArrayList<UserBean>();
-            String query = "select * from users where usernam like '%"+ username +"%'";
+            String query = "select * from users where username like '" + username + "'";
             conn = DBcontext.getConnection();
             ps = conn.prepareStatement(query);
             rs = ps.executeQuery();

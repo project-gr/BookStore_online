@@ -11,7 +11,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-public final class CustomerAccount_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class StaffAccount_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -150,7 +150,6 @@ public final class CustomerAccount_jsp extends org.apache.jasper.runtime.HttpJsp
       out.write("\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
-      out.write("         \n");
       out.write("        <table>\n");
       out.write("            <tr>\n");
       out.write("                <th> User Name </th>\n");
@@ -163,7 +162,7 @@ public final class CustomerAccount_jsp extends org.apache.jasper.runtime.HttpJsp
       out.write("                <th> &nbsp; </th>\n");
       out.write("            </tr>\n");
       out.write("            ");
- String username = (String) request.getAttribute("username"); 
+ String username = (String) request.getAttribute("username");
       out.write("\n");
       out.write("            ");
       if (_jspx_meth_c_forEach_1(_jspx_page_context))
@@ -176,7 +175,7 @@ public final class CustomerAccount_jsp extends org.apache.jasper.runtime.HttpJsp
       out.write("            </form>\n");
       out.write("        </div>\n");
       out.write("    </body>\n");
-      out.write("</html>");
+      out.write("</html>\n");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
         out = _jspx_out;

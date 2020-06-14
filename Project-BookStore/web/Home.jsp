@@ -7,7 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ include file="header.jsp" %>
 
-<%@ page import="com.bookstore.bean.BookBean, java.util.*, java.text.NumberFormat" %>
+<%@ page import="com.bookstore.dao.BookDAO , com.bookstore.bean.BookBean, java.util.*, java.text.NumberFormat" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -26,35 +26,49 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 
-        <jsp:useBean id="bookList" class="com.bookstore.dao.BookDAO" scope="request"></jsp:useBean>
+
     </head>
     <body>
-        <h1>Hehe Book Store</h1>
-        
-        <table>
-                <tr>
-                    <th> ISBN </th>
-                    <th> title </th>
-                    <th> Price </th>
-                    <th> Publisher </th>
-                    <th> Inventory </th>
-                    <th> Description </th>
-                    <th> Cover image </th>
-                    <th> &nbsp; </th>
-                </tr>
+        <jsp:useBean id="bookList" class="com.bookstore.dao.BookDAO" scope="request"></jsp:useBean>
+        <center>
+            <h1>Hehe Book Store</h1>
 
         <c:forEach items="${bookList.getList()}" var="book">
-                <tr>
-                    <th> ${book.getIsbn()} </th>
-                    <th> ${book.getTitle()} </th>
-                    <th> ${book.getPrice()} </th>
-                    <th> ${book.getPublisher()} </th>
-                    <th> ${book.getInventory()} </th>
-                    <th> ${book.getDescription()} </th>
-                    <th> ${book.getCover_image()} </th>
-                    <th> &nbsp; </th>
-                </tr>
-            </c:forEach>
-        </table>
-    </body>
+            <div class="col-md-4" style="padding: 5px;">
+                <div style="margin:3px; padding:10px; background-color: #eee;">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <a href="./BookLookup?isbn= ${book.getIsbn()}" style="max-height: 130px; max-width: 110px;">
+                                <img src="C:\\Users\\ADMIN\\Desktop\\BookStore_online\\Project-BookStore\\web\\images\\ ${book.getCoverImage()}" alt=" ${book.getTitle()} cover" style="max-width: inherit; max-height: inherit">
+                            </a>
+                        </div>
+                        <div class="col-md-8" style="text-align: left; padding-left:10px;">
+                            <h4> ${book.getTitle()} </h4>
+                            <h5> ${book.getIsbn()} </h5>
+                            <h5> ${book.getPrice()} </h5>
+                            &nbsp;
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </c:forEach>
+    </center>
+</body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

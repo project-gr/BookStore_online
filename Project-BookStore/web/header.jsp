@@ -26,8 +26,25 @@
                 </div>
 
                 <div>
-                    <form class="navbar-form navbar-left" action="./Search" method="get">
-                        <input type="text" class="form-control" name="search-query" id="search-query" size="40" placeholder="ISBN, Title, Author, Keyword...">
+                    <!--Search Box-->
+                    <form method="post" action="DaoControl">
+                        <ol type="circle">
+
+                            <div class="searchBox">
+                                <input class="searchBox_input" type="text" name="searchBox" placeholder="Search">
+
+                                <select class="searchBox_input" name="type">
+                                    <option value="Book"> Book </option>
+                                    <option value="Author"> Author </option>
+                                    <option value="Category"> Category </option>
+                                </select> 
+
+                                <button type="submit" name="search" class="searchbtn">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </div>
+
+                        </ol>
                     </form>
 
                     <ul class="nav navbar-nav navbar-right">
@@ -40,9 +57,9 @@
                                     </c:forEach>
                             </ul>
                         </li>
-                        
+
                         <li><a href="Login.jsp">Sign in/Register</a></li> 
-                        
+
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Admin<span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
@@ -51,7 +68,7 @@
                                 <li><a href="./UserLookup">View Users</a></li>
                             </ul>
                         </li>
-                        
+
                         <li><a href="./Checkout.jsp">Cart</a></li>
                     </ul>
                 </div>

@@ -17,19 +17,19 @@ public class BookBean {
     private String publisher;
     private int inventory;
     private String description;
-    private String cover_image;
+    private String coverImage;
 
     public BookBean() {
     }
 
-    public BookBean(String isbn, String title, float price, String publisher, int inventory, String description, String cover_image) {
+    public BookBean(String isbn, String title, float price, String publisher, int inventory, String description, String coverImage) {
         this.isbn = isbn;
         this.title = title;
         this.price = price;
         this.publisher = publisher;
         this.inventory = inventory;
         this.description = description;
-        this.cover_image = cover_image;
+        this.coverImage = coverImage;
     }
 
     public String getIsbn() {
@@ -80,12 +80,12 @@ public class BookBean {
         this.description = description;
     }
 
-    public String getCover_image() {
-        return cover_image;
+    public String getCoverImage() {
+        return coverImage;
     }
 
-    public void setCover_image(String cover_image) {
-        this.cover_image = cover_image;
+    public void setCoverImage(String coverImage) {
+        this.coverImage = coverImage;
     }
 
 

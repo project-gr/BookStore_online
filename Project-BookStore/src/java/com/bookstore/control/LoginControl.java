@@ -60,9 +60,11 @@ public class LoginControl extends HttpServlet {
                 out.println("<div><h1><b><i> Sorry username or password error!</h1></div>");
 
             } else if (userBean.getIs_staff() == 0) {
-                request.getRequestDispatcher("cus.jsp").include(request, response);
+                request.setAttribute("username", username);
+                request.getRequestDispatcher("CustomerAccount.jsp").include(request, response);
             } else {
-                request.getRequestDispatcher("staff.jsp").include(request, response);
+                request.setAttribute("username", username);
+                request.getRequestDispatcher("StaffAccount.jsp").include(request, response);
             }
         } catch (Exception e) {
         }
