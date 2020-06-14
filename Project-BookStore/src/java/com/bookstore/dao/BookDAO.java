@@ -34,19 +34,11 @@ public class BookDAO implements DAO<BookBean>{
                 bookBean = new BookBean();
                 bookBean.setIsbn(rs.getString(1));
                 bookBean.setTitle(rs.getString(2));
-<<<<<<< HEAD:BookStore/src/java/dao/BookDAO.java
-                bookBean.setAuthor(rs.getString(3));
-                bookBean.setCategory(rs.getString(4));
-                bookBean.setPrice(rs.getFloat(5));
-                bookBean.setDiscount(rs.getFloat(6));
-                bookBean.setQuantity(rs.getInt(7));
-=======
                 bookBean.setPrice(rs.getFloat(3));
                 bookBean.setPublisher(rs.getString(4));
                 bookBean.setInventory(rs.getInt(5));
                 bookBean.setDescription(rs.getString(6));
                 bookBean.setCover_image(rs.getString(7));
->>>>>>> 5bce24f5d781c0764f9c1bfd54d29d3a77515e32:Project-BookStore/src/java/com/bookstore/dao/BookDAO.java
                 
                 bookList.add(bookBean);
             }
@@ -63,19 +55,12 @@ public class BookDAO implements DAO<BookBean>{
         
         try {
             bookList= new ArrayList<BookBean>();
-<<<<<<< HEAD:BookStore/src/java/dao/BookDAO.java
-            String query = "select * from Books where Book_Name like '%"+ Book_Name +"%'";
-            conn = DBcontext.getConnection();
-            ps = conn.prepareStatement(query);
-            
-=======
             bookBean = new BookBean();
             String query = "select * from Books where title =?";
             conn = DBcontext.getConnection();
             ps = conn.prepareStatement(query);
             
             ps.setString(1, title);
->>>>>>> 5bce24f5d781c0764f9c1bfd54d29d3a77515e32:Project-BookStore/src/java/com/bookstore/dao/BookDAO.java
             
             rs = ps.executeQuery();
             
@@ -94,38 +79,7 @@ public class BookDAO implements DAO<BookBean>{
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
         return bookList;
-    }
-
-    @Override
-    public BookBean getBook(String Book_ID) {
-        BookBean bookBean = null;
-        
-        try {
-            bookBean = new BookBean();
-            String query = "select * from Books where Book_ID =?";
-            conn = DBcontext.getConnection();
-            ps = conn.prepareStatement(query);
-            
-            ps.setString(1, Book_ID);
-            
-            rs = ps.executeQuery();
-            
-            while (rs.next()){
-                bookBean = new BookBean();
-                bookBean.setBook_ID(rs.getString(1));
-                bookBean.setBook_Name(rs.getString(2));
-                bookBean.setAuthor(rs.getString(3));
-                bookBean.setCategory(rs.getString(4));
-                bookBean.setPrice(rs.getFloat(5));
-                bookBean.setDiscount(rs.getFloat(6));
-                bookBean.setQuantity(rs.getInt(7));
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return bookBean;
     }
 
 
