@@ -39,7 +39,7 @@
                     <div class="row">
                         <div class="col-md-4">
                             <a href="./BookLookup?isbn= ${book.getIsbn()}" style="max-height: 130px; max-width: 110px;">
-                                <img src="C:\\Users\\ADMIN\\Desktop\\BookStore_online\\Project-BookStore\\web\\images\\ ${book.getCoverImage()}" alt=" ${book.getTitle()} cover" style="max-width: inherit; max-height: inherit">
+                                <img src="${book.getCoverImage()}" alt=" ${book.getTitle()} cover" style="">
                             </a>
                         </div>
                         <div class="col-md-8" style="text-align: left; padding-left:10px;">
@@ -53,6 +53,16 @@
             </div>
         </c:forEach>
     </center>
+
+
+    <H3 ALIGN="CENTER">
+        Ramdom number from 0 to 10 : 
+        <FONT COLOR="RED">
+        <%= (int) (Math.random() * 10)%>
+        </FONT>
+    </H3>
+    <H4 ALIGN="CENTER">Refresh the page to see if the number changes...</H4>
+
 </body>
 </html>
 

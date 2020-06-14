@@ -178,7 +178,7 @@ public final class AddBook_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("                    <tr>\n");
       out.write("                        <td class =\"color_text\">Category: </td>\n");
-      out.write("                        <td><input type=\"text\" name=\"genre\" id=\"genre\" placeholder=\"Genre\"</td>\n");
+      out.write("                        <td><input type=\"text\" name=\"category\" id=\"genre\" placeholder=\"Category\"</td>\n");
       out.write("                    </tr>\n");
       out.write("                    \n");
       out.write("                    <tr>\n");

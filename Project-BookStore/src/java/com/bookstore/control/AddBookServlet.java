@@ -15,6 +15,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -30,15 +32,13 @@ import javax.servlet.http.Part;
  * @author ADMIN
  */
 @WebServlet(name = "AddBookServlet", urlPatterns = {"/AddBookServlet"})
-@MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2,
-        maxFileSize = 1024 * 1024 * 10,
-        maxRequestSize = 1024 * 1024 * 50)
+@MultipartConfig(maxFileSize = 1024 * 1024 * 10)
 public class AddBookServlet extends HttpServlet {
 
     public AddBookServlet() throws Exception {
         this.connection = DBcontext.getConnection();
     }
-    
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -46,16 +46,14 @@ public class AddBookServlet extends HttpServlet {
         }
     }
 
-
-    String isbn, title, publisher, description;
+    String isbn, title, publisher, description, author, category;
     int inventory;
     float price;
 
     String connectionURL = "jdbc:sqlserver://localhost:1433;databaseName=bookstore;user=sa;password=sa";
-    //step 3
-    //step 2
-    Connection connection; 
+    Connection connection;
     Statement statement = null; //step 4
+    PreparedStatement ps = null;
     ResultSet rs = null;
 
     @Override
@@ -69,7 +67,7 @@ public class AddBookServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        
+
 //      Folder save image
         Part part = request.getPart("coverImage");
         String fileName = extractFileName(part);
@@ -78,9 +76,8 @@ public class AddBookServlet extends HttpServlet {
 
         part.write(savePath + File.separator);
 
-        try{
-            
-            
+        try {
+
             isbn = request.getParameter("isbn");
             title = request.getParameter("title");
             price = Float.parseFloat(request.getParameter("price"));
@@ -88,12 +85,23 @@ public class AddBookServlet extends HttpServlet {
             inventory = Integer.parseInt(request.getParameter("inventory"));
             description = request.getParameter("description");
 
-                       
             statement = connection.createStatement();
-            
+
             String query = "insert into books values('" + isbn + "','" + title + "','" + price + "','"
                     + publisher + "','" + inventory + "','" + description + "','" + savePath + "','');";
             statement.execute(query);
+
+            author = request.getParameter("author");
+            category = request.getParameter("category");
+            
+            String query1 = "insert into author values('" + author + "');";
+            statement.execute(query1);
+
+            String query2 = "insert into author_book values('" + author + "','" + isbn + "');";
+            statement.execute(query2);
+            
+            String query3 = "insert into category_book values('" + category + "','" + isbn + "');";
+            statement.execute(query3);
 
             response.sendRedirect("Home.jsp");
             out.close();
@@ -108,7 +116,6 @@ public class AddBookServlet extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 
     private String extractFileName(Part part) {
         String contentDisp = part.getHeader("content-disposition");

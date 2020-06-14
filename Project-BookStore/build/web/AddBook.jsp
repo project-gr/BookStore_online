@@ -40,7 +40,7 @@
 
                     <tr>
                         <td class ="color_text">Category: </td>
-                        <td><input type="text" name="genre" id="genre" placeholder="Genre"</td>
+                        <td><input type="text" name="category" id="genre" placeholder="Category"</td>
                     </tr>
                     
                     <tr>
