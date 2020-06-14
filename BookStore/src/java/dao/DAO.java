@@ -15,7 +15,9 @@ import java.util.List;
 public interface DAO {
     List<BookBean> getList();
     
-    List<BookBean> getElement (String Book_Name);
+    List<BookBean> getElement(String Book_Name);
+    
+    BookBean getBook (String Book_ID);
     
     boolean save (BookBean bookBean);
     

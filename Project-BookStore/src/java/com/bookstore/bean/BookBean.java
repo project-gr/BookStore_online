@@ -3,37 +3,33 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package bean;
-
-import java.util.Date;
+package com.bookstore.bean;
 
 /**
  *
- * @author Ren
+ * @author ADMIN
  */
 public class BookBean {
     
     private String isbn;
     private String title;
+    private float price;
     private String publisher;
-    private double price;
-    private String description;
-    private Date publish_date;
-    private String cover_image;
     private int inventory;
+    private String description;
+    private String cover_image;
 
     public BookBean() {
     }
 
-    public BookBean(String isbn, String title, String publisher, double price, String description, Date publish_date, String cover_image, int inventory) {
+    public BookBean(String isbn, String title, float price, String publisher, int inventory, String description, String cover_image) {
         this.isbn = isbn;
         this.title = title;
-        this.publisher = publisher;
         this.price = price;
-        this.description = description;
-        this.publish_date = publish_date;
-        this.cover_image = cover_image;
+        this.publisher = publisher;
         this.inventory = inventory;
+        this.description = description;
+        this.cover_image = cover_image;
     }
 
     public String getIsbn() {
@@ -52,6 +48,14 @@ public class BookBean {
         this.title = title;
     }
 
+    public float getPrice() {
+        return price;
+    }
+
+    public void setPrice(float price) {
+        this.price = price;
+    }
+
     public String getPublisher() {
         return publisher;
     }
@@ -60,12 +64,12 @@ public class BookBean {
         this.publisher = publisher;
     }
 
-    public double getPrice() {
-        return price;
+    public int getInventory() {
+        return inventory;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
+    public void setInventory(int inventory) {
+        this.inventory = inventory;
     }
 
     public String getDescription() {
@@ -76,14 +80,6 @@ public class BookBean {
         this.description = description;
     }
 
-    public Date getPublish_date() {
-        return publish_date;
-    }
-
-    public void setPublish_date(Date publish_date) {
-        this.publish_date = publish_date;
-    }
-
     public String getCover_image() {
         return cover_image;
     }
@@ -92,12 +88,6 @@ public class BookBean {
         this.cover_image = cover_image;
     }
 
-    public int getInventory() {
-        return inventory;
-    }
 
-    public void setInventory(int inventory) {
-        this.inventory = inventory;
-    }
     
 }
