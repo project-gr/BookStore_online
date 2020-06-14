@@ -5,6 +5,7 @@
  */
 package com.bookstore.control;
 
+import com.bookstore.bean.AuthorBean;
 import com.bookstore.context.DBcontext;
 import java.io.File;
 import java.io.IOException;
@@ -16,6 +17,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -93,13 +95,22 @@ public class AddBookServlet extends HttpServlet {
 
             author = request.getParameter("author");
             category = request.getParameter("category");
-            
-            String query1 = "insert into author values('" + author + "');";
-            statement.execute(query1);
 
-            String query2 = "insert into author_book values('" + author + "','" + isbn + "');";
-            statement.execute(query2);
-            
+            rs = statement.executeQuery("select author_name from author");
+            while (rs.next()) {
+                if (rs.getString("author_name") == null) {
+                    String query1 = "insert into author values('" + author + "');";
+                    statement.execute(query1);
+
+                    String query2 = "insert into author_book values('" + author + "','" + isbn + "');";
+                    statement.execute(query2);
+                }
+                else{
+                    String query2 = "insert into author_book values('" + author + "','" + isbn + "');";
+                    statement.execute(query2);
+                }
+            }
+
             String query3 = "insert into category_book values('" + category + "','" + isbn + "');";
             statement.execute(query3);
 
