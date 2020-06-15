@@ -43,9 +43,7 @@
                         <form action="BookLookUp" method="post">
                             <div class="col-md-8" style="text-align: left; padding-left:10px;">
                                 
-                                <button
-                                    request.setAttribute("isbn", ${book.getIsbn()});>
-                            </button>
+                                <a href="BookLookUp?isbn=${book.getIsbn()}"></a>
                                 <h5> ${book.getIsbn()} </h5>
                                 <h5> ${book.getPrice()} </h5>
                                 &nbsp;

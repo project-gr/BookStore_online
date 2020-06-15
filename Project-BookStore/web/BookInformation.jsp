@@ -4,6 +4,7 @@
     Author     : ADMIN
 --%>
 
+<%@page import="com.bookstore.bean.BookBean"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ include file="header.jsp" %>
 <%@ page import="com.bookstore.dao.BookDAO, java.text.*" %>
@@ -26,13 +27,22 @@
                 <form action="./cartUpdate" method="post">
 
                     <% NumberFormat fmt = NumberFormat.getNumberInstance();%>
-
+<!--
                     <h4>Price: <%=fmt.format(book.getPrice())%></h4>
                     <h4>ISBN: ${book.isbn}</h4>
                     <h4>Publisher: ${book.publisher}</h4>
                     <h4>Description:</h4>
                     <p>${book.description}</p>
-
+-->
+                    <% 
+                        BookBean bookBean = (BookBean)request.getAttribute("bookBean");
+                        out.println(bookBean.getIsbn());
+                        out.println(bookBean.getTitle());
+                        
+                    %>
+                    
+                    ${request.getAttribute("bookBean").getIsbn()}
+                    ${request.getAttribute("bookBean").getTitle()}
                     <input type="hidden" name="isbn" value="${book.isbn}" />
                     <input type="hidden" name="title" value="${book.title}" />
                     <input type="hidden" name="quantity" value="1" />
