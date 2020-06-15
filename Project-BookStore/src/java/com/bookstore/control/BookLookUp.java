@@ -21,13 +21,21 @@ public class BookLookUp extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-            String isbn = request.getParameter("isbn");
-            System.out.println("Retreived ISBN: " + isbn);
-            BookBean book = new BookDAO().selectBook(isbn);
-            request.setAttribute("book", book);
+//            String isbn = request.getParameter("isbn");
+//            System.out.println("Retreived ISBN: " + isbn);
+//            BookBean book = new BookDAO().selectBook(isbn);
+//            request.setAttribute("book", book);
+//
+//            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/BookInformation.jsp");
+//            dispatcher.forward(request, response);
 
-            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/BookInformation.jsp");
-            dispatcher.forward(request, response);
+            String isbn = request.getParameter("isbn");
+            
+            BookDAO bookDAO = new BookDAO();
+            BookBean bookBean = bookDAO.selectBook(isbn);
+            
+            request.setAttribute("bookBean", bookBean);
+            request.getRequestDispatcher("BookInformation.jsp").forward(request, response);
         } catch (Exception e) {
 
         }
