@@ -10,13 +10,23 @@ package com.bookstore.bean;
  * @author ADMIN
  */
 public class CategoryBean {
+    private int categoryId;
     private String categoryName;
 
     public CategoryBean() {
     }
 
-    public CategoryBean(String categoryName) {
+    public CategoryBean(int categoryId, String categoryName) {
+        this.categoryId = categoryId;
         this.categoryName = categoryName;
+    }
+
+    public int getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(int categoryId) {
+        this.categoryId = categoryId;
     }
 
     public String getCategoryName() {

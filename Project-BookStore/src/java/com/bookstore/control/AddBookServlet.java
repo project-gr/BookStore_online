@@ -6,6 +6,7 @@
 package com.bookstore.control;
 
 import com.bookstore.bean.AuthorBean;
+import com.bookstore.bean.CategoryBean;
 import com.bookstore.context.DBcontext;
 import java.io.File;
 import java.io.IOException;
@@ -49,7 +50,7 @@ public class AddBookServlet extends HttpServlet {
     }
 
     String isbn, title, publisher, description, author, category;
-    int inventory;
+    int inventory, authorid, categoryid;
     float price;
 
     String connectionURL = "jdbc:sqlserver://localhost:1433;databaseName=bookstore;user=sa;password=sa";
@@ -93,26 +94,42 @@ public class AddBookServlet extends HttpServlet {
                     + publisher + "','" + inventory + "','" + description + "','" + savePath + "','');";
             statement.execute(query);
 
+            authorid = Integer.parseInt(request.getParameter("authorid"));
+            categoryid = Integer.parseInt(request.getParameter("categoryid"));
             author = request.getParameter("author");
             category = request.getParameter("category");
 
-            rs = statement.executeQuery("select author_name from author");
+            rs = statement.executeQuery("select * from author where author_id = " + authorid);
+            AuthorBean authorBean = null;
             while (rs.next()) {
-                if (rs.getString("author_name").equals(author)) {
-                    String query3 = "insert into author_book values('" + author + "','" + isbn + "');";
-                    statement.execute(query3);
-                }
-                else{
-                    String query1 = "insert into author values('" + author + "');";
-                    statement.execute(query1);
-
-                    String query2 = "insert into author_book values('" + author + "','" + isbn + "');";
-                    statement.execute(query2);
-                }
+                authorBean = new AuthorBean(rs.getInt(1), rs.getString(2));
             }
 
-            String query3 = "insert into category_book values('" + category + "','" + isbn + "');";
-            statement.execute(query3);
+            if (authorBean == null) {
+                String addAuthor = "insert into author values(" + authorid + ",'" + author + "');";
+                statement.execute(addAuthor);
+                String addAuthorBook = "insert into author_book values(" + authorid + ",'" + isbn + "');";
+                statement.execute(addAuthorBook);
+            } else {
+                String addAuthorBook = "insert into author_book values(" + authorid + ",'" + isbn + "');";
+                statement.execute(addAuthorBook);
+            }
+
+            rs = statement.executeQuery("select * from category where category_id = " + categoryid);
+            CategoryBean categoryBean = null;
+            while (rs.next()) {
+                categoryBean = new CategoryBean(rs.getInt(1), rs.getString(2));
+            }
+
+            if (authorBean == null) {
+                String addCategory = "insert into category values(" + categoryid + ",'" + category + "');";
+                statement.execute(addCategory);
+                String addCategoryBook = "insert into category_book values(" + categoryid + ",'" + isbn + "');";
+                statement.execute(addCategoryBook);
+            } else {
+                String addCategoryBook = "insert into category_book values(" + categoryid + ",'" + isbn + "');";
+                statement.execute(addCategoryBook);
+            }
 
             response.sendRedirect("Home.jsp");
             out.close();

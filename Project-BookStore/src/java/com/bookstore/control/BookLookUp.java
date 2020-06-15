@@ -22,7 +22,6 @@ public class BookLookUp extends HttpServlet {
             throws ServletException, IOException {
         try {
             String isbn = request.getParameter("isbn");
-            System.out.println("Retreived ISBN: " + isbn);
             BookBean book = new BookDAO().selectBook(isbn);
             request.setAttribute("book", book);
 

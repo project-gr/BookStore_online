@@ -39,8 +39,18 @@
                     </tr>
 
                     <tr>
+                        <td class ="color_text">Category ID:</td>
+                        <td><input type="text" name="categoryid" id="categoryid" placeholder="Category ID"</td>
+                    </tr>
+                    
+                    <tr>
                         <td class ="color_text">Category: </td>
                         <td><input type="text" name="category" id="genre" placeholder="Category"</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class ="color_text">Author ID:</td>
+                        <td><input type="text" name="authorid" id="authorid" placeholder="Author ID"</td>
                     </tr>
                     
                     <tr>
