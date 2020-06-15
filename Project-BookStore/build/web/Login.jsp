@@ -28,6 +28,8 @@
                     </tr>    
                 </table>
                 <button class="button" type="submit">Login</button>
+                
+                <a href="SignUp.jsp" class="w3-button w3-black">Create new account</a>
             </center>
         </form>
     </body>

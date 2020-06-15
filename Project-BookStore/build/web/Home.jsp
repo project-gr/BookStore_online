@@ -40,15 +40,17 @@
                                 <img src="${book.getCoverImage()}" alt=" ${book.getTitle()} cover" style="">
                             </a>
                         </div>
-                        <div class="col-md-8" style="text-align: left; padding-left:10px;">
-                           
-                            <a href=".\BookLookUp?isbn= ${book.getIsbn()}" style="max-height: 130px; max-width: 110px;">
-                                <h4> ${book.getTitle()} </h4>
-                            </a>
-                            <h5> ${book.getIsbn()} </h5>
-                            <h5> ${book.getPrice()} </h5>
-                            &nbsp;
-                        </div>
+                        <form action="BookLookUp" method="post">
+                            <div class="col-md-8" style="text-align: left; padding-left:10px;">
+                                
+                                <button
+                                    request.setAttribute("isbn", ${book.getIsbn()});>
+                            </button>
+                                <h5> ${book.getIsbn()} </h5>
+                                <h5> ${book.getPrice()} </h5>
+                                &nbsp;
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>

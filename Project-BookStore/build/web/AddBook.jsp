@@ -20,52 +20,52 @@
                 <table>
                     <tr>
                         <td class ="color_text">ISBN:</td>
-                        <td><input type="text" name="isbn" id="isbn" placeholder="ISBN" required</td>
+                        <td><input type="text" name="isbn" id="isbn" placeholder="ISBN" required></td>
                     </tr>
 
                     <tr>
                         <td class ="color_text">Title:</td>
-                        <td><input type="text" name="title" id="title" placeholder="Title" required</td>
+                        <td><input type="text" name="title" id="title" placeholder="Title" required></td>
                     </tr>
 
                     <tr>
                         <td class ="color_text">Price:</td>
-                        <td><input type="text" name="price" id="price" placeholder="Price" required</td>
+                        <td><input type="text" name="price" id="price" placeholder="Price" required></td>
                     </tr>
                     
                     <tr>
                         <td class ="color_text">Publisher:</td>
-                        <td><input type="text" name="publisher" id="publisher" placeholder="Publisher" required</td>
+                        <td><input type="text" name="publisher" id="publisher" placeholder="Publisher" required></td>
                     </tr>
 
                     <tr>
                         <td class ="color_text">Category ID:</td>
-                        <td><input type="text" name="categoryid" id="categoryid" placeholder="Category ID"</td>
+                        <td><input type="text" name="categoryid" id="categoryid" placeholder="Category ID"></td>
                     </tr>
                     
                     <tr>
                         <td class ="color_text">Category: </td>
-                        <td><input type="text" name="category" id="genre" placeholder="Category"</td>
+                        <td><input type="text" name="category" id="genre" placeholder="Category"></td>
                     </tr>
                     
                     <tr>
                         <td class ="color_text">Author ID:</td>
-                        <td><input type="text" name="authorid" id="authorid" placeholder="Author ID"</td>
+                        <td><input type="text" name="authorid" id="authorid" placeholder="Author ID"></td>
                     </tr>
                     
                     <tr>
                         <td class ="color_text">Author:</td>
-                        <td><input type="text" name="author" id="author" placeholder="Author"</td>
+                        <td><input type="text" name="author" id="author" placeholder="Author"></td>
                     </tr>
 
                     <tr>
                         <td class ="color_text">Inventory:</td>
-                        <td><input type="text" name="inventory" id="inventory" placeholder="Inventory" required</td>
+                        <td><input type="text" name="inventory" id="inventory" placeholder="Inventory" required></td>
                     </tr>
 
                     <tr>
                         <td class ="color_text">Book Description:</td>
-                        <td><input type="text" name="description" id="description" placeholder="Book Description" required</td>
+                        <td><input type="text" name="description" id="description" placeholder="Book Description" required></td>
                     </tr>
 
                     <tr>

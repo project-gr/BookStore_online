@@ -52,7 +52,7 @@
 
                     <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown">
-                            <a href="./Login.jsp" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> <span class="caret"></span>Sign in/Register</a>
+                            <a href="./Login.jsp" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> <span class="caret"></span>Sign in</a>
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href="./CustomerAccount.jsp">Account</a></li>
                                 <li class="divider"></li>
