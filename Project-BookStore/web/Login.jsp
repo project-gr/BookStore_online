@@ -14,7 +14,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <form action="CheckLogin" method="post">
+        <form action="LoginControl" method="post">
             <center>
                 <h1>Customer Login</h1>
                 <table>

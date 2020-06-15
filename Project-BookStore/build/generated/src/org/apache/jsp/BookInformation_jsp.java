@@ -3,14 +3,14 @@ package org.apache.jsp;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
-import com.bookstore.dao.UserDAO;
-import com.bookstore.bean.UserBean;
 import java.sql.DriverManager;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import com.bookstore.dao.BookDAO;
+import java.text.*;
 
-public final class CustomerAccount_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class BookInformation_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -65,24 +65,6 @@ public final class CustomerAccount_jsp extends org.apache.jasper.runtime.HttpJsp
       out.write("\n");
       out.write("\n");
       out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("<!DOCTYPE html>\n");
-      out.write("<html>\n");
-      out.write("    <head>\n");
-      out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
-      out.write("        <title>JSP Page</title>\n");
-      out.write("        ");
-      com.bookstore.dao.UserDAO userList = null;
-      synchronized (request) {
-        userList = (com.bookstore.dao.UserDAO) _jspx_page_context.getAttribute("userList", PageContext.REQUEST_SCOPE);
-        if (userList == null){
-          userList = new com.bookstore.dao.UserDAO();
-          _jspx_page_context.setAttribute("userList", userList, PageContext.REQUEST_SCOPE);
-        }
-      }
-      out.write("\n");
-      out.write("        ");
       out.write("\n");
       out.write("\n");
       out.write("\n");
@@ -163,35 +145,78 @@ public final class CustomerAccount_jsp extends org.apache.jasper.runtime.HttpJsp
       out.write("    </body>\n");
       out.write("</html>\n");
       out.write("\n");
+      out.write("\n");
+      out.write("<!DOCTYPE html>\n");
+      out.write("<html>\n");
+      out.write("    <head>\n");
+      out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
+      out.write("        <title>JSP Page</title>\n");
+      out.write("        <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css\">\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
-      out.write("         \n");
-      out.write("        <table>\n");
-      out.write("            <tr>\n");
-      out.write("                <th> User Name </th>\n");
-      out.write("                <th> Pass </th>\n");
-      out.write("                <th> Full Name </th>\n");
-      out.write("                <th> Address </th>\n");
-      out.write("                <th> Phone </th>\n");
-      out.write("                <th> Email </th>\n");
-      out.write("                <th> Sign up date </th>\n");
-      out.write("                <th> &nbsp; </th>\n");
-      out.write("            </tr>\n");
-      out.write("            ");
- String username = (String) request.getAttribute("username"); 
+      out.write("        ");
+      com.bookstore.bean.BookBean book = null;
+      synchronized (request) {
+        book = (com.bookstore.bean.BookBean) _jspx_page_context.getAttribute("book", PageContext.REQUEST_SCOPE);
+        if (book == null){
+          book = new com.bookstore.bean.BookBean();
+          _jspx_page_context.setAttribute("book", book, PageContext.REQUEST_SCOPE);
+        }
+      }
       out.write("\n");
-      out.write("            ");
-      if (_jspx_meth_c_forEach_1(_jspx_page_context))
-        return;
+      out.write("        ");
+      org.apache.jasper.runtime.JspRuntimeLibrary.introspect(_jspx_page_context.findAttribute("book"), request);
       out.write("\n");
-      out.write("        </table>\n");
-      out.write("        <div class=\"right\">\n");
-      out.write("            <form action=\"Logout.jsp\">\n");
-      out.write("                <input type=\"submit\" value=\"Logout\">\n");
-      out.write("            </form>\n");
+      out.write("            <div class=\"panel panel-default\">\n");
+      out.write("                <div class=\"panel-heading\">\n");
+      out.write("                    <h3 class=\"panel-title\">");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${book.title}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("</h3>\n");
+      out.write("            </div>\n");
+      out.write("            <div class=\"panel-body\">\n");
+      out.write("                <img src=\"./images/");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${book.coverImage}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("\" alt=\"");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${book.title}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write(" cover\" width=\"200\">\n");
+      out.write("                <form action=\"./cartUpdate\" method=\"post\">\n");
+      out.write("\n");
+      out.write("                    ");
+ NumberFormat fmt = NumberFormat.getCurrencyInstance();
+      out.write("\n");
+      out.write("\n");
+      out.write("                    <h4>Price: ");
+      out.print(fmt.format(book.getPrice()));
+      out.write("</h4>\n");
+      out.write("                    <h4>ISBN: ");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${book.isbn}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("</h4>\n");
+      out.write("                    <h4>Publisher: ");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${book.publisher}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("</h4>\n");
+      out.write("                    <h4>Description:</h4>\n");
+      out.write("                    <p>");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${book.description}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("</p>\n");
+      out.write("                    ");
+      out.print(NumberFormat.getCurrencyInstance().format(book.getPrice()));
+      out.write("\n");
+      out.write("\n");
+      out.write("                    <input type=\"hidden\" name=\"isbn\" value=\"");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${book.isbn}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("\" />\n");
+      out.write("                    <input type=\"hidden\" name=\"title\" value=\"");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${book.title}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("\" />\n");
+      out.write("                    <input type=\"hidden\" name=\"quantity\" value=\"1\" />\n");
+      out.write("                    <input type=\"submit\" name=\"add\" value=\"Add to Cart\" />\n");
+      out.write("                </form>\n");
+      out.write("\n");
+      out.write("            </div>\n");
       out.write("        </div>\n");
+      out.write("\n");
       out.write("    </body>\n");
-      out.write("</html>");
+      out.write("</html>\n");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
         out = _jspx_out;
@@ -243,66 +268,6 @@ public final class CustomerAccount_jsp extends org.apache.jasper.runtime.HttpJsp
     } finally {
       _jspx_th_c_forEach_0.doFinally();
       _jspx_tagPool_c_forEach_var_items.reuse(_jspx_th_c_forEach_0);
-    }
-    return false;
-  }
-
-  private boolean _jspx_meth_c_forEach_1(PageContext _jspx_page_context)
-          throws Throwable {
-    PageContext pageContext = _jspx_page_context;
-    JspWriter out = _jspx_page_context.getOut();
-    //  c:forEach
-    org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_forEach_1 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _jspx_tagPool_c_forEach_var_items.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
-    _jspx_th_c_forEach_1.setPageContext(_jspx_page_context);
-    _jspx_th_c_forEach_1.setParent(null);
-    _jspx_th_c_forEach_1.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${userList.getElement(username)}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
-    _jspx_th_c_forEach_1.setVar("user");
-    int[] _jspx_push_body_count_c_forEach_1 = new int[] { 0 };
-    try {
-      int _jspx_eval_c_forEach_1 = _jspx_th_c_forEach_1.doStartTag();
-      if (_jspx_eval_c_forEach_1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
-        do {
-          out.write("\n");
-          out.write("                <tr>\n");
-          out.write("                    <th> ");
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${user.getUsername()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-          out.write(" </th>\n");
-          out.write("                    <th> ");
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${user.getPass()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-          out.write(" </th>\n");
-          out.write("                    <th> ");
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${user.getfName()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-          out.write(" </th>\n");
-          out.write("                    <th> ");
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${user.getAddress()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-          out.write(" </th>\n");
-          out.write("                    <th> ");
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${user.getPhone()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-          out.write(" </th>\n");
-          out.write("                    <th> ");
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${user.getEmail()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-          out.write(" </th>\n");
-          out.write("                    <th> ");
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${user.getSignup_date()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-          out.write(" </th>\n");
-          out.write("                    <th> &nbsp; </th>\n");
-          out.write("                </tr>\n");
-          out.write("            ");
-          int evalDoAfterBody = _jspx_th_c_forEach_1.doAfterBody();
-          if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
-            break;
-        } while (true);
-      }
-      if (_jspx_th_c_forEach_1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-        return true;
-      }
-    } catch (Throwable _jspx_exception) {
-      while (_jspx_push_body_count_c_forEach_1[0]-- > 0)
-        out = _jspx_page_context.popBody();
-      _jspx_th_c_forEach_1.doCatch(_jspx_exception);
-    } finally {
-      _jspx_th_c_forEach_1.doFinally();
-      _jspx_tagPool_c_forEach_var_items.reuse(_jspx_th_c_forEach_1);
     }
     return false;
   }
