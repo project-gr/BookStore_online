@@ -14,8 +14,31 @@ public class OrderBean {
     private int orderID;
     private String isbn;
     private int quantity;
+    
+    private BookBean book;
+    private BookBean price;
 
+    public BookBean getBook() {
+        return book;
+    }
+
+    public void setBook(BookBean book) {
+        this.book = book;
+    }
+
+    public BookBean getPrice() {
+        return price;
+    }
+
+    public void setPrice(BookBean price) {
+        this.price = price;
+    }
+
+    
+    
+    
     public OrderBean() {
+        super();
     }
 
     public OrderBean(int orderID, String isbn, int quantity) {

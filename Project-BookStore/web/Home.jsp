@@ -36,19 +36,17 @@
                 <div style="margin:3px; padding:10px; background-color: #eee;">
                     <div class="row">
                         <div class="col-md-4">
-                            <a href="BookInformation?isbn= ${book.getIsbn()}" style="max-height: 130px; max-width: 110px;">
-                                <img src="${book.getCoverImage()}" alt=" ${book.getTitle()} cover" style="">
-                            </a>
+                            <img src="images/${book.getCoverImage()}" style="max-height: 130px; max-width: 110px;">
                         </div>
-                        <form action="BookLookUp" method="post">
-                            <div class="col-md-8" style="text-align: left; padding-left:10px;">
-                                
-                                <a href="BookLookUp?isbn=${book.getIsbn()}"></a>
-                                <h5> ${book.getIsbn()} </h5>
-                                <h5> ${book.getPrice()} </h5>
-                                &nbsp;
-                            </div>
-                        </form>
+                        <div class="col-md-8" style="text-align: left; padding-left:10px;">
+
+                            <a href="BookLookUp?isbn=${book.getIsbn()}">
+                                <h3>${book.getTitle()}</h3>
+                            </a>
+                            <h5> ${book.getIsbn()} </h5>
+                            <h5> $ ${book.getPrice()} </h5>
+                            &nbsp;
+                        </div>
                     </div>
                 </div>
             </div>

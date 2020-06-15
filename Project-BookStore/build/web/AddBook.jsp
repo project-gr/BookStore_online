@@ -65,7 +65,7 @@
 
                     <tr>
                         <td class ="color_text">Book Description:</td>
-                        <td><input type="text" name="description" id="description" placeholder="Book Description" required></td>
+                        <td><input type="text" name="description" id="description" placeholder="Book Description"></td>
                     </tr>
 
                     <tr>

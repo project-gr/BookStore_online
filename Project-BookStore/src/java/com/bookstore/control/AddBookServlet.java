@@ -74,7 +74,7 @@ public class AddBookServlet extends HttpServlet {
 //      Folder save image
         Part part = request.getPart("coverImage");
         String fileName = extractFileName(part);
-        String savePath = "C:\\Users\\ADMIN\\Desktop\\BookStore_online\\Project-BookStore\\web\\images\\" + File.separator + fileName;
+        String savePath = File.separator + fileName;
         File fileSaveDir = new File(savePath);
 
         part.write(savePath + File.separator);
@@ -121,7 +121,7 @@ public class AddBookServlet extends HttpServlet {
                 categoryBean = new CategoryBean(rs.getInt(1), rs.getString(2));
             }
 
-            if (authorBean == null) {
+            if (categoryBean == null) {
                 String addCategory = "insert into category values(" + categoryid + ",'" + category + "');";
                 statement.execute(addCategory);
                 String addCategoryBook = "insert into category_book values(" + categoryid + ",'" + isbn + "');";
