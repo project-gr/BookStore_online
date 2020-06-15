@@ -22,7 +22,7 @@
         <form action="SignUpServlet" method="post" class="form-signup">
             <center>
                 <h1>Sign Up</h1>
-                <input type="text" class="form-control" placeholder="Username" name="username" id="username" required><div id="status"></div>
+                <div><input type="text" class="form-control" placeholder="Username" name="username" id="username" required><div id="status"></div></div>
                 <script type="text/javascript" src="checkSignUp.js"></script>
                 
                 <input type="password" class="form-control" placeholder="Password" name="password" required>

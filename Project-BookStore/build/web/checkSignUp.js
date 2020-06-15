@@ -5,6 +5,15 @@
  */
 
 
-$('#username').keyup(function()){
+$('#username').keyup(function(){
+    var username = $('#username').val();
+   $('#status').html('<img src="username_loader.gif">');
+   
+   if(username !== ''){
+       
+   }
+   else{
+       $('#status').html('');
+   }
     
-}
+});
