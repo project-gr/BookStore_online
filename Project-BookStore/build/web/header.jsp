@@ -33,12 +33,12 @@
                 </div>
 
                 <div id="navbar" class="navbar-collapse collapse">
-                    <form class="navbar-form navbar-left" method="post" action="DaoControl">
+                    <form class="navbar-form navbar-left" method="post" action="SearchControl">
 
                         <ol type="circle">
 
                             <div class="searchBox">
-                                <input class="form-control" name="search-query" id="search-query" size="40" type="text" placeholder="Search">
+                                <input class="form-control" name="search" id="search" size="40" type="text" placeholder="Search">
 
                                 <select class="form-control" name="type">
                                     <option value="Book"> Book </option>

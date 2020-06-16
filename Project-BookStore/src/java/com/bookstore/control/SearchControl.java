@@ -5,6 +5,7 @@
  */
 package com.bookstore.control;
 
+import com.bookstore.dao.BookDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -17,8 +18,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author ADMIN
  */
-@WebServlet(name = "DaoControl", urlPatterns = {"/DaoControl"})
-public class DaoControl extends HttpServlet {
+@WebServlet(name = "SearchControl", urlPatterns = {"/SearchControl"})
+public class SearchControl extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,14 +33,18 @@ public class DaoControl extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
+            String search = request.getParameter("search");
+            String type = request.getParameter("type");
 
-        PrintWriter out = response.getWriter();
+            BookDAO bookDAO = new BookDAO();
 
-        try {
-        } catch(Exception e){
-            
+            if (type.equals("Book")) {
+                request.setAttribute("search",search);
+                request.setAttribute("type","books");
+                request.getRequestDispatcher("ShowBook.jsp").include(request, response);
+            }
         }
-
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -68,9 +73,14 @@ public class DaoControl extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        processRequest(request, response);
     }
 
+    /**
+     * Returns a short description of the servlet.
+     *
+     * @return a String containing servlet description
+     */
     @Override
     public String getServletInfo() {
         return "Short description";

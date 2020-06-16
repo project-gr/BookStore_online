@@ -77,6 +77,39 @@ public class BookDAO implements DAO<BookBean> {
         return bookList;
     }
     
+    public List<BookBean> getKey(String name, String type) {
+        List<BookBean> bookList = null;
+        BookBean bookBean = null;
+
+        try {
+            bookList = new ArrayList<BookBean>();
+            bookBean = new BookBean();
+            String query = "select * from books where ? like '%?%';";
+            conn = DBcontext.getConnection();
+            ps = conn.prepareStatement(query);
+
+            ps.setString(1, type);
+            ps.setString(2, name);
+
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                bookBean = new BookBean();
+                bookBean.setIsbn(rs.getString(1));
+                bookBean.setTitle(rs.getString(2));
+                bookBean.setPrice(rs.getFloat(3));
+                bookBean.setPublisher(rs.getString(4));
+                bookBean.setInventory(rs.getInt(5));
+                bookBean.setDescription(rs.getString(6));
+                bookBean.setCoverImage(rs.getString(7));
+
+                bookList.add(bookBean);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return bookList;
+    }
 
     @Override
     public List<BookBean> getList() {
@@ -203,6 +236,8 @@ public class BookDAO implements DAO<BookBean> {
         }
         return b;
     }
+    
+    
 
 //    public List<BookBean> getBooksList() throws Exception {
 //        String query = "select * from Books";
