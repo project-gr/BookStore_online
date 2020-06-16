@@ -7,190 +7,22 @@ and open the template in the editor.
     Created on : Jun 12, 2020, 10:56:14 PM
     Author     : ADMIN
 */
-
-body {
-    font-family: sans-serif;
-}
-
-/*Navbar*/
-nav {
-    padding: 10px 2%;
-    margin: 5px;
-    margin-bottom: 30px;
-    top: 0;
-    background-color: #24252a;
-
-    max-height: 75px;
-
-    /*Sticky*/
-    position: sticky;
-    position: -webkit-sticky; /*chorme */
-    position: -moz-sticky; /* Mozilla firefox */
-    position: -ms-sticky; /* Microsoft */
-    position: -o-sticky; /* Opere */
-}
-
-.menu {
+.row{
     display: flex;
-    justify-content: space-between;
-    align-items: center;
     flex-wrap: wrap;
 }
-
-.logo {
-    cursor: pointer;
-    padding: 14px 16px;
+.side{
+    flex: 20%;
+    resize: horizontal;
+    overflow: auto;
+}
+.main{
+    flex: 80%;
+    resize: horizontal;
+    overflow: auto;
 }
 
-
-ul {
-    list-style-type: none;
-}
-
-a {
-    text-decoration: none;
+body{
+    background-color: black;
     color: white;
-}
-
-.button {
-    display: inline-block;
-    cursor: pointer;
-    text-align: center;
-    padding: 14px 16px;
-}
-
-.active {
-    display: block;
-}
-
-.button:hover, a:hover {
-    background-color: red;
-    color: white;
-    text-decoration: none;
-}
-
-.special {
-}
-
-.dropdown {
-    display: inline-block;
-    padding: 0;
-}
-
-.dropbtn {
-    display: inline-block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-}
-
-.dropdown-content {
-    right: 2%;
-}
-
-.dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    text-align: left;
-}
-
-.dropdown-content a:hover {background-color: #f1f1f1;}
-
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-
-.toggle a {
-    font-size: 20px;
-}
-
-/* Navbar Toggle */
-.toggle {
-    display: none;
-    cursor:pointer;
-}
-.bars {
-    background: #999;
-    display: inline-block;
-    height: 2px;
-    position: relative;
-    transition: background .2s ease-out;
-    width: 18px;
-}
-.bars:before,
-.bars:after {
-    background: #999;
-    content: '';
-    display: block;
-    height: 100%;
-    position: absolute;
-    transition: all .2s ease-out;
-    width: 100%;
-}
-.bars:before {
-    top: 5px;
-}
-.bars:after {
-    top: -5px;
-}
-
-/* Tablet menu */
-@media all and (max-width: 800px) {
-    .menu {
-        justify-content: space-between;
-    }
-
-    .logo {
-        flex: 1;
-    }
-
-    .item:not(.show) {
-        width: 100%;
-        text-align: center;
-        order: 3;
-        display: none;
-    }
-
-    .button {
-        display: block;
-    }
-
-    .item.show {
-        order: 1;
-        display: inline-block;
-    }
-
-    .toggle {
-        order: 2;
-        display: block;
-    }
-
-    .item.active {
-        display: block;
-    }
-
-}
-
-/* Mobile menu */
-@media all and (max-width: 600px) {
-
-    .item, .item.show {
-        display: none;
-    }
-
-    .item.active {
-        display: block;
-    }
 }

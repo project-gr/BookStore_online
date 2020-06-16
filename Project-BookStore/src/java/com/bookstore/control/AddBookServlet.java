@@ -12,14 +12,10 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -90,8 +86,8 @@ public class AddBookServlet extends HttpServlet {
 
             statement = connection.createStatement();
 
-            String query = "insert into books values('" + isbn + "','" + title + "','" + price + "','"
-                    + publisher + "','" + inventory + "','" + description + "','" + savePath + "','');";
+            String query = "insert into books values('" + isbn + "','" + title + "'," + price + ",'"
+                    + publisher + "'," + inventory + ",'" + description + "','" + savePath + "','');";
             statement.execute(query);
 
             authorid = Integer.parseInt(request.getParameter("authorid"));

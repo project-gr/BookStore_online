@@ -17,35 +17,37 @@
         <%@ include file="header.jsp" %>
     </head>
     <body>
-        <table>
-            <tr>
-                <th> User Name </th>
-                <th> Pass </th>
-                <th> Full Name </th>
-                <th> Address </th>
-                <th> Phone </th>
-                <th> Email </th>
-                <th> Sign up date </th>
-                <th> &nbsp; </th>
-            </tr>
-            <% String username = (String) request.getAttribute("username");%>
-            <c:forEach items="${userList.getElement(username)}" var="user">
-                <tr>
-                    <th> ${user.getUsername()} </th>
-                    <th> ${user.getPass()} </th>
-                    <th> ${user.getfName()} </th>
-                    <th> ${user.getAddress()} </th>
-                    <th> ${user.getPhone()} </th>
-                    <th> ${user.getEmail()} </th>
-                    <th> ${user.getSignup_date()} </th>
-                    <th> &nbsp; </th>
-                </tr>
-            </c:forEach>
-        </table>
-        <div class="right">
-            <form action="Logout.jsp">
-                <input type="submit" value="Logout">
-            </form>
-        </div>
+        <% String username = (String) request.getAttribute("username");%>
+        <c:forEach items="${userList.getElement(username)}" var="user">
+            <div style="margin:3px; padding:10px;">
+                <div class="row">
+                    <div class="col-md-4">
+
+                        <form action="Avatar?username=${user.getUsername()}" method="post" enctype="multipart/form-data">
+                            <div class="div1" style="background-image: ${user.getAvatar()};
+                                 background-size: cover;
+                                 width: 150px;
+                                 height: 150px;
+                                 border-radius: 50%;"></div>
+
+                            <input type="file" placeholder="Cover Image" name="coverImage" id="coverImage"/>
+                            <button class="button" type="submit">Add Avatar</button>
+                        </form>
+
+                        <form action="Logout.jsp">
+                            <input type="submit" value="Logout">
+                        </form>
+                    </div>
+                    <div class="col-md-8" style="text-align: left; padding-left:10px;">
+                        <h4>${user.getfName()}</h4>
+                        <h5>${user.getEmail()}</h5>
+                        <h5>${user.getPhone()}</h5>
+                        <h5>${user.getAddress()}</h5>
+                        <h5>${user.getSignup_date()}</h5>
+                        &nbsp;
+                    </div>
+                </div>
+            </div>
+        </c:forEach>
     </body>
 </html>

@@ -19,17 +19,19 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     </head>
     <body>
-        <form action="SignUpServlet" method="post" class="form-signup">
+        <form action="SignUpServlet" method="post" class="form-signup" enctype="multipart/form-data">
             <center>
                 <h1>Sign Up</h1>
-                <div><input type="text" class="form-control" placeholder="Username" name="username" id="username" required><div id="status"></div></div>
-                <script type="text/javascript" src="checkSignUp.js"></script>
+                <input type="text" class="form-control" placeholder="Username" name="username" id="username" required>
+<!--                <div id="status"></div>-->
+<!--                <script type="text/javascript" src="checkSignUp.js"></script>-->
                 
-                <input type="password" class="form-control" placeholder="Password" name="password" required>
+                <input type="password" class="form-control" placeholder="Password" name="pass" required>
                 <input type="text" class="form-control" placeholder="Name" name="fName" required>
-                <input type="text" class="form-control" placeholder="Address" name="address" required>
-                <input type="text" class="form-control" placeholder="Phone Number" name="phone" required>
-                <input type="text" class="form-control" placeholder="Email" name="email" required>
+                <input type="text" class="form-control" placeholder="Address" name="address">
+                <input type="text" class="form-control" placeholder="Phone Number" name="phone">
+                <input type="text" class="form-control" placeholder="Email" name="email">
+                <input type="file" class="form-control" name="avatar" id="avatar"/>
                 <br>
                 <input type="submit" class="btn btn-lg btn-primary btn-block" value="Sign Up">
             </center>

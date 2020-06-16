@@ -5,7 +5,6 @@
  */
 package com.bookstore.dao;
 
-import com.bookstore.bean.BookBean;
 import com.bookstore.bean.UserBean;
 import com.bookstore.context.DBcontext;
 import java.sql.Connection;
@@ -36,7 +35,7 @@ public class UserDAO implements DAO<UserBean>{
             rs = ps.executeQuery();
             
             while (rs.next()){
-                UserBean userBean = new UserBean(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getByte(7), rs.getDate(8));
+                UserBean userBean = new UserBean(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getByte(7), rs.getDate(8), rs.getString(9));
                 return userBean;
             }
         } catch (Exception e) {
@@ -66,6 +65,7 @@ public class UserDAO implements DAO<UserBean>{
                 userBean.setEmail(rs.getString(6));
                 userBean.setIs_staff(rs.getByte(7));
                 userBean.setSignup_date(rs.getDate(8));
+                userBean.setAvatar(rs.getString(9));
                 
                 userList.add(userBean);
                 
@@ -98,6 +98,7 @@ public class UserDAO implements DAO<UserBean>{
                 userBean.setEmail(rs.getString(6));
                 userBean.setIs_staff(rs.getByte(7));
                 userBean.setSignup_date(rs.getDate(8));
+                userBean.setAvatar(rs.getString(9));
                 
                 userList.add(userBean);
             }

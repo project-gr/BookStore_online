@@ -5,13 +5,17 @@
  */
 package com.bookstore.control;
 
+import com.bookstore.bean.Cart;
+import com.bookstore.bean.OrderBean;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -35,16 +39,6 @@ public class AddtoCart extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet AddtoCart</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet AddtoCart at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
         }
     }
 
@@ -74,7 +68,47 @@ public class AddtoCart extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String quantityStr = request.getParameter("quantity");
+        String isbn = request.getParameter("isbn");
+        
+        String removeButton = request.getParameter("remove");
+        String addButton = request.getParameter("add");
+        String quantityError = request.getParameter("quanError");
+        
+        HttpSession session = request.getSession();
+        
+        Cart cart = (Cart) session.getAttribute("cart");
+        
+        if(cart == null){
+            cart = new Cart();
+        }
+        
+        if(quantityError == null){
+            int quantity;
+            if(addButton != null){
+                quantity = 1;
+            }
+            else if(removeButton != null){
+                quantity = 0;
+            }
+            else{
+                quantity = Integer.parseInt(quantityStr);
+            }
+            
+            OrderBean orderBean = new OrderBean();
+            orderBean.setIsbn(isbn);
+            orderBean.setQuantity(quantity);
+            cart.add(orderBean);
+            if(quantity > 0){
+                cart.add(orderBean);
+            } else{
+                cart.remove(orderBean);
+            }
+        }
+        session.setAttribute("cart", cart);
+        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Check.jsp");
+        dispatcher.forward(request, response);
+        
     }
 
     /**

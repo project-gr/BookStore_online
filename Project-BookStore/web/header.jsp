@@ -69,7 +69,7 @@
                                 <li><a href="./UserLookup">View Users</a></li>
                             </ul>
                         </li>
-                        <li><a href="./Checkout.jsp">Cart</a></li>
+                        <li><a href="./Check.jsp">Cart</a></li>
                     </ul>
                 </div>
             </div>

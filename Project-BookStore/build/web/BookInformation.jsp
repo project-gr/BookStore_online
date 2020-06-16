@@ -8,6 +8,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ include file="header.jsp" %>
 <%@ page import="com.bookstore.dao.BookDAO, java.text.*" %>
+<%@ page import="com.bookstore.bean.BookBean, java.util.*, java.text.NumberFormat" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -17,6 +18,7 @@
         <link rel="stylesheet" href="bookInfoStyle.css">
     </head>
     <body>
+        
         <jsp:useBean id="book" scope="request" class="com.bookstore.bean.BookBean"></jsp:useBean>
         <jsp:setProperty name="book" property="*"></jsp:setProperty>
             <div class="panel panel-default">
@@ -24,26 +26,34 @@
                     <h3 class="panel-title">${book.title}</h3>
             </div>
             <div class="panel-body">
+                <%
+                    BookBean bookBean = (BookBean) request.getAttribute("bookBean");
+                %>
                 <div class="row">
-                    <div class="column">
-                        <center>
-                            <%
-                                BookBean bookBean = (BookBean) request.getAttribute("bookBean");
-                            %>
+                    <center>
+                        <div class="column">
+                            <form action="AddtoCart" method="post">
+                            <h1><b><%out.println(bookBean.getTitle());%></b></h1>
                             <img src="images/<%out.println(bookBean.getCoverImage());%>" style="max-width: 300px; max-height: 300px">
-                        </center>
-                    </div>
 
+
+                            <input type="hidden" name="isbn" value="${book.isbn}" />
+                            <input type="hidden" name="title" value="${book.title}" />
+                            <input type="hidden" name="quantity" value="1" />
+                            <br>
+                            <input type="submit" name="add" value="Add to Cart" />
+                            </form>
+                        </div>
+                    </center>
+                    <br>
                     <div class="column">
+                        <br>
+                        <br>
+                        <br>
+
                         <h4> ISBN: 
                             <%
                                 out.println(bookBean.getIsbn());
-                            %>
-                        </h4>
-
-                        <h4> Title: 
-                            <%
-                                out.println(bookBean.getTitle());
                             %>
                         </h4>
 
@@ -70,60 +80,17 @@
                             out.println(bookBean.getDescription());
                         %>
 
-
-                        <input type="hidden" name="isbn" value="${book.isbn}" />
-                        <input type="hidden" name="title" value="${book.title}" />
-                        <input type="hidden" name="quantity" value="1" />
-                        <br>
-                        <input type="submit" name="add" value="Add to Cart" />
                     </div>
-                    <div class="column">
-                        <form method="post">
 
-                            <table border="2">
-                                <tr>
-                                    <td>ISBN</td>
-                                    <td>Title</td>
-                                    <td>Price</td>
-                                    <td>Publisher</td>
-                                    <td>Inventory</td>
-                                    <td>Description</td>
-                                    <td>Cover Image</td>
-                                </tr>
-                                <%
-                                    try {
-                                        Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-                                        String url = "jdbc:sqlserver://bookstore";
-                                        String username = "sa";
-                                        String password = "sa";
-                                        String query = "SELECT TOP 5 *FROM books ORDER BY CHECKSUM(NEWID()) GO";
-                                        Connection conn = DriverManager.getConnection(url, username, password);
-                                        Statement stmt = conn.createStatement();
-                                        ResultSet rs = stmt.executeQuery(query);
-                                        while (rs.next()) {
-                                %>
-                                <tr><td><%rs.getString("isbn"); %></td></tr>
-                                <tr><td><%rs.getString("title"); %></td></tr>
-                                <tr><td><%rs.getFloat("price"); %></td></tr>
-                                <tr><td><%rs.getString("publisher"); %></td></tr>
-                                <tr><td><%rs.getInt("inventory"); %></td></tr>
-                                <tr><td><%rs.getString("description"); %></td></tr>
-                                <tr><td><%rs.getString("coverImage"); %></td></tr>
-
-                                <%
-                                    }
-                                %>
-                            </table>
-                            <%
-                                    rs.close();
-                                    stmt.close();
-                                    conn.close();
-                                } catch (Exception e) {
-                                    e.printStackTrace();
-                                }
-                            %>
-                        </form>`
-                    </div>
+                    <jsp:useBean id="bookList" class="com.bookstore.dao.BookDAO" scope="request"></jsp:useBean>
+                        <center>
+                            <h1><b>Recommend for you</b></h1>
+                            <div class="column">
+                            <c:forEach items="${bookList.getRandom()}" var="book">
+                                <img src="images/${book.getCoverImage()}" style="max-height: 200px; max-width: 250px;">
+                            </c:forEach>
+                        </div>
+                    </center>
 
                 </div>
             </div>

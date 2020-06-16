@@ -46,6 +46,37 @@ public class BookDAO implements DAO<BookBean> {
         }
         return book;
     }
+    
+    public List<BookBean> getRandom() {
+        List<BookBean> bookList = null;
+        BookBean bookBean = null;
+
+        try {
+            bookList = new ArrayList<BookBean>();
+            String query = "select TOP 6 * from books ORDER BY CHECKSUM(NEWID())";
+
+            conn = DBcontext.getConnection();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                bookBean = new BookBean();
+                bookBean.setIsbn(rs.getString(1));
+                bookBean.setTitle(rs.getString(2));
+                bookBean.setPrice(rs.getFloat(3));
+                bookBean.setPublisher(rs.getString(4));
+                bookBean.setInventory(rs.getInt(5));
+                bookBean.setDescription(rs.getString(6));
+                bookBean.setCoverImage(rs.getString(7));
+
+                bookList.add(bookBean);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return bookList;
+    }
+    
 
     @Override
     public List<BookBean> getList() {
