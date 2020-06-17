@@ -68,21 +68,6 @@ public final class header_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <script src=\"https://kit.fontawesome.com/a076d05399.js\"></script>\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
-      out.write("        ");
-
-            String connectionURL = "jdbc:sqlserver://localhost:1433;databaseName=bookstore;user=sa;password=sa"; //step 2
-            Connection connection = null; //step 3
-            Statement statement = null; //step 4
-            ResultSet rs = null;
-        
-      out.write("\n");
-      out.write("        ");
-
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance(); //step 1
-            connection = DriverManager.getConnection(connectionURL);
-            statement = connection.createStatement();
-        
-      out.write("\n");
       out.write("        <nav class=\"navbar navbar-inverse navbar-fixed-top\">\n");
       out.write("            <div class=\"container-fluid\">\n");
       out.write("                <div class=\"navbar-header\">\n");
@@ -91,26 +76,27 @@ public final class header_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                </div>\n");
       out.write("\n");
       out.write("                <div id=\"navbar\" class=\"navbar-collapse collapse\">\n");
-      out.write("                    <form class=\"navbar-form navbar-left\" method=\"post\" action=\"DaoControl\">\n");
+      out.write("                    <form class=\"navbar-form navbar-left\" method=\"post\" action=\"SearchServlet\">\n");
       out.write("\n");
       out.write("                        <ol type=\"circle\">\n");
       out.write("\n");
-      out.write("                            <div class=\"searchBox\">\n");
-      out.write("                                <input class=\"form-control\" name=\"search-query\" id=\"search-query\" size=\"40\" type=\"text\" placeholder=\"Search\">\n");
+      out.write("                            \n");
+      out.write("                                <input class=\"form-control\" name=\"search\" id=\"search\" size=\"40\" type=\"text\" placeholder=\"Search\">\n");
       out.write("\n");
       out.write("                                <select class=\"form-control\" name=\"type\">\n");
       out.write("                                    <option value=\"Book\"> Book </option>\n");
       out.write("                                    <option value=\"Author\"> Author </option>\n");
       out.write("                                    <option value=\"Category\"> Category </option>\n");
       out.write("                                </select> \n");
-      out.write("                            </div>\n");
+      out.write("                                \n");
+      out.write("                                <input type=\"submit\" value=\"Search\">\n");
       out.write("\n");
       out.write("                        </ol>\n");
       out.write("                    </form>\n");
       out.write("\n");
       out.write("                    <ul class=\"nav navbar-nav navbar-right\">\n");
       out.write("                        <li class=\"dropdown\">\n");
-      out.write("                            <a href=\"./Login.jsp\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-expanded=\"false\"> <span class=\"caret\"></span>Sign in/Register</a>\n");
+      out.write("                            <a href=\"./Login.jsp\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-expanded=\"false\"> <span class=\"caret\"></span>Sign in</a>\n");
       out.write("                            <ul class=\"dropdown-menu\" role=\"menu\">\n");
       out.write("                                <li><a href=\"./CustomerAccount.jsp\">Account</a></li>\n");
       out.write("                                <li class=\"divider\"></li>\n");
@@ -127,7 +113,7 @@ public final class header_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                                <li><a href=\"./UserLookup\">View Users</a></li>\n");
       out.write("                            </ul>\n");
       out.write("                        </li>\n");
-      out.write("                        <li><a href=\"./Checkout.jsp\">Cart</a></li>\n");
+      out.write("                        <li><a href=\"./Check.jsp\">Cart</a></li>\n");
       out.write("                    </ul>\n");
       out.write("                </div>\n");
       out.write("            </div>\n");

@@ -77,19 +77,17 @@ public class BookDAO implements DAO<BookBean> {
         return bookList;
     }
     
-    public List<BookBean> getKey(String name, String type) {
+   public List<BookBean> getKey(String title) {
         List<BookBean> bookList = null;
         BookBean bookBean = null;
 
         try {
             bookList = new ArrayList<BookBean>();
-            bookBean = new BookBean();
-            String query = "select * from books where ? like '%?%';";
+            String query = "select * from books where title like '%_"+ title +"%'";
             conn = DBcontext.getConnection();
             ps = conn.prepareStatement(query);
 
-            ps.setString(1, type);
-            ps.setString(2, name);
+            ps.setString(1, title);
 
             rs = ps.executeQuery();
 

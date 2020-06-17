@@ -5,14 +5,18 @@
  */
 package com.bookstore.control;
 
+import com.bookstore.bean.BookBean;
 import com.bookstore.dao.BookDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -34,16 +38,16 @@ public class SearchControl extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            String search = request.getParameter("search");
-            String type = request.getParameter("type");
-
-            BookDAO bookDAO = new BookDAO();
-
-            if (type.equals("Book")) {
-                request.setAttribute("search",search);
-                request.setAttribute("type","books");
-                request.getRequestDispatcher("ShowBook.jsp").include(request, response);
-            }
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet SearchControl</title>");
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet SearchControl at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         }
     }
 
@@ -73,7 +77,20 @@ public class SearchControl extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        PrintWriter out = response.getWriter();
+
+        String search = request.getParameter("search");
+        String type = request.getParameter("type");
+
+        BookDAO bookDAO = new BookDAO();
+
+        if (type.equals("Book")) {
+            for (BookBean bookBean : bookDAO.getKey(search)) {
+                out.println(bookBean.getIsbn());
+            }
+        }
+
+        out.close();
     }
 
     /**
