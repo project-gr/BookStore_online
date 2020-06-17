@@ -31,7 +31,7 @@ insert into users values('tom','tom123','Tom','','','',0,'');
 
 create table author
 (
-	author_id int identity(1,1) primary key NOT NULL,
+	author_id int primary key NOT NULL,
 	author_name varchar(50) NOT NULL
 );
 
@@ -53,17 +53,18 @@ insert into author_book values(3,'963852741');
 insert into author_book values(4,'789456123');
 
 create table category(
-	category_name varchar(20) primary key NOT NULL
+	category_id int primary key NOT NULL,
+	category_name varchar(20)
 );
 
 create table category_book(
-	category_name varchar(20) NOT NULL,
+	category_id int NOT NULL,
 	isbn varchar(20) NOT NULL,
-	primary key(category_name, isbn),
+	primary key(category_id, isbn),
 	foreign key (isbn) references books(isbn)
         on delete cascade
         on update cascade,
-    foreign key (category_name) references category(category_name)
+    foreign key (category_id ) references category(category_id )
         on delete cascade
         on update cascade
 );

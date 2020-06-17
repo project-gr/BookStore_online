@@ -89,11 +89,11 @@ public class BookDAO implements DAO<BookBean> {
                     + "inner join author as a\n"
                     + "on ab.author_id = a.author_id)\n"
                     + "on ab.isbn = b.isbn\n"
-                    + "where a.author_name = ?;";
+                    + "where a.author_name like ?";
             conn = DBcontext.getConnection();
             ps = conn.prepareStatement(query);
 
-            ps.setString(1, name);
+            ps.setString(1, "%" + name + "%");
 
             rs = ps.executeQuery();
 
@@ -122,10 +122,14 @@ public class BookDAO implements DAO<BookBean> {
         try {
             bookList = new ArrayList<BookBean>();
             bookBean = new BookBean();
-            String query = "select * from books\n"
-                    + "inner join category_book as c\n"
-                    + "on c.isbn = books.isbn\n"
-                    + "where c.category_name = ?;";
+
+
+            String query = "select * from books as b\n"
+                    + "inner join (category_book as cb\n"
+                    + "inner join category as c\n"
+                    + "on cb.category_id = c.category_id)\n"
+                    + "on cb.isbn = b.isbn\n"
+                    + "where c.category_name = ?";
             conn = DBcontext.getConnection();
             ps = conn.prepareStatement(query);
 
