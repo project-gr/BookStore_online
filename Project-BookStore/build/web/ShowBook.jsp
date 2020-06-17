@@ -27,33 +27,45 @@
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <%
-            List<BookBean> bookList = (List<BookBean>) request.getAttribute("bookList");
 
-            for (BookBean book : bookList) {
-        %>
 
-        <div class="col-md-4" style="padding: 5px;">
-            <div style="margin:3px; padding:10px; background-color: #eee;">
-                <div class="row">
-                    <div class="col-md-4">
-                        <img src="images/<%= book.getCoverImage() %>" style="max-height: 130px; max-width: 110px;">
+    <center>
+        <div class="row">
+            <div class="side"></div>
+
+            <div class="main">
+                <div>
+                    <%
+                        List<BookBean> bookList = (List<BookBean>) request.getAttribute("bookList");
+
+                        for (BookBean book : bookList) {
+                    %>
+
+                    <div class="col-md-4" style="padding: 5px;">
+                        <div style="margin:3px; padding:10px; background-color: #eee;">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <img src="images/<%= book.getCoverImage()%>" style="max-height: 130px; max-width: 110px;">
+                                </div>
+                                <div class="col-md-8" style="text-align: left; padding-left:10px;">
+
+                                    <a href="BookLookUp?isbn=<%= book.getIsbn()%>">
+                                        <h4><%= book.getTitle()%></h4>
+                                    </a>
+                                    <h5> <%= book.getIsbn()%> </h5>
+                                    <h5> <%= book.getPrice()%> </h5>
+                                    &nbsp;
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-md-8" style="text-align: left; padding-left:10px;">
 
-                        <a href="BookLookUp?isbn=<%= book.getIsbn() %>">
-                            <h4><%= book.getTitle()%></h4>
-                        </a>
-                        <h5> <%= book.getIsbn()%> </h5>
-                        <h5> <%= book.getPrice()%> </h5>
-                        &nbsp;
-                    </div>
+                    <%
+                        }
+                    %>
                 </div>
             </div>
         </div>
-
-        <%
-            }
-        %>
-    </body>
+    </center>
+</body>
 </html>
