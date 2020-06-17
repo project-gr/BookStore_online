@@ -4,6 +4,7 @@
     Author     : ADMIN
 --%>
 
+<%@page import="java.util.List"%>
 <%@page import="com.bookstore.bean.BookBean"%>
 <%@page import="com.bookstore.dao.BookDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -12,35 +13,45 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+
+        <!--Css link-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+        <!--Bootstrap 4-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+        <link rel="stylesheet" href="style.css">
     </head>
     <body>
         <%
-            String search = (String) request.getAttribute("search");
-            String type = (String) request.getAttribute("type");
+            List<BookBean> bookList = (List<BookBean>) request.getAttribute("bookList");
 
-            BookDAO bookDAO = new BookDAO();
-            for (BookBean book : bookDAO.getKey(search, type)) {
+            for (BookBean book : bookList) {
         %>
-        
+
         <div class="col-md-4" style="padding: 5px;">
             <div style="margin:3px; padding:10px; background-color: #eee;">
                 <div class="row">
                     <div class="col-md-4">
-                        <img src="images/<% book.getCoverImage(); %>" style="max-height: 130px; max-width: 110px;">
+                        <img src="images/<%= book.getCoverImage() %>" style="max-height: 130px; max-width: 110px;">
                     </div>
                     <div class="col-md-8" style="text-align: left; padding-left:10px;">
 
-                        <a href="BookLookUp?isbn=<% book.getIsbn(); %>">
-                            <h4><% book.getTitle();%></h4>
+                        <a href="BookLookUp?isbn=<%= book.getIsbn() %>">
+                            <h4><%= book.getTitle()%></h4>
                         </a>
-                        <h5> <% book.getIsbn();%> </h5>
-                        <h5> <% book.getPrice();%> </h5>
+                        <h5> <%= book.getIsbn()%> </h5>
+                        <h5> <%= book.getPrice()%> </h5>
                         &nbsp;
                     </div>
                 </div>
             </div>
         </div>
-        
+
         <%
             }
         %>

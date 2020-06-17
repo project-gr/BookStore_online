@@ -5,9 +5,12 @@
  */
 package com.bookstore.control;
 
+import com.bookstore.bean.BookBean;
 import com.bookstore.dao.BookDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -38,10 +41,19 @@ public class SearchControl extends HttpServlet {
             String type = request.getParameter("type");
 
             BookDAO bookDAO = new BookDAO();
+            List<BookBean> bookList = new ArrayList<BookBean>();
 
             if (type.equals("Book")) {
-                request.setAttribute("search",search);
-                request.setAttribute("type","books");
+                bookList = bookDAO.getKey(search);
+                request.setAttribute("bookList", bookList);
+                request.getRequestDispatcher("ShowBook.jsp").include(request, response);
+            } else if (type.equals("Category")){
+                bookList = bookDAO.getBookByCategory(search);
+                request.setAttribute("bookList", bookList);
+                request.getRequestDispatcher("ShowBook.jsp").include(request, response);
+            } else {
+                bookList = bookDAO.getBookByAuthor(search);
+                request.setAttribute("bookList", bookList);
                 request.getRequestDispatcher("ShowBook.jsp").include(request, response);
             }
         }

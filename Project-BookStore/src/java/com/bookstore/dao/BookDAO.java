@@ -23,7 +23,7 @@ public class BookDAO implements DAO<BookBean> {
     static ResultSet rs = null;
 
     public BookBean selectBook(String isbn) throws Exception {
-            BookBean book = new BookBean();
+        BookBean book = new BookBean();
         try {
             String query = "select * from books where isbn =?";
 
@@ -46,7 +46,7 @@ public class BookDAO implements DAO<BookBean> {
         }
         return book;
     }
-    
+
     public List<BookBean> getRandom() {
         List<BookBean> bookList = null;
         BookBean bookBean = null;
@@ -77,19 +77,92 @@ public class BookDAO implements DAO<BookBean> {
         return bookList;
     }
     
-    public List<BookBean> getKey(String name, String type) {
+    public List<BookBean> getBookByAuthor(String name) {
         List<BookBean> bookList = null;
         BookBean bookBean = null;
 
         try {
             bookList = new ArrayList<BookBean>();
             bookBean = new BookBean();
-            String query = "select * from books where ? like '%?%';";
+            String query = "select * from books as b\n"
+                    + "inner join (author_book as ab\n"
+                    + "inner join author as a\n"
+                    + "on ab.author_id = a.author_id)\n"
+                    + "on ab.isbn = b.isbn\n"
+                    + "where a.author_name = ?;";
             conn = DBcontext.getConnection();
             ps = conn.prepareStatement(query);
 
-            ps.setString(1, type);
-            ps.setString(2, name);
+            ps.setString(1, name);
+
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                bookBean = new BookBean();
+                bookBean.setIsbn(rs.getString(1));
+                bookBean.setTitle(rs.getString(2));
+                bookBean.setPrice(rs.getFloat(3));
+                bookBean.setPublisher(rs.getString(4));
+                bookBean.setInventory(rs.getInt(5));
+                bookBean.setDescription(rs.getString(6));
+                bookBean.setCoverImage(rs.getString(7));
+
+                bookList.add(bookBean);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return bookList;
+    }
+
+    public List<BookBean> getBookByCategory(String name) {
+        List<BookBean> bookList = null;
+        BookBean bookBean = null;
+
+        try {
+            bookList = new ArrayList<BookBean>();
+            bookBean = new BookBean();
+            String query = "select * from books\n"
+                    + "inner join category_book as c\n"
+                    + "on c.isbn = books.isbn\n"
+                    + "where c.category_name = ?;";
+            conn = DBcontext.getConnection();
+            ps = conn.prepareStatement(query);
+
+            ps.setString(1, name);
+
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                bookBean = new BookBean();
+                bookBean.setIsbn(rs.getString(1));
+                bookBean.setTitle(rs.getString(2));
+                bookBean.setPrice(rs.getFloat(3));
+                bookBean.setPublisher(rs.getString(4));
+                bookBean.setInventory(rs.getInt(5));
+                bookBean.setDescription(rs.getString(6));
+                bookBean.setCoverImage(rs.getString(7));
+
+                bookList.add(bookBean);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return bookList;
+    }
+
+    public List<BookBean> getKey(String name) {
+        List<BookBean> bookList = null;
+        BookBean bookBean = null;
+
+        try {
+            bookList = new ArrayList<BookBean>();
+            bookBean = new BookBean();
+            String query = "select * from books where title LIKE ?";
+            conn = DBcontext.getConnection();
+            ps = conn.prepareStatement(query);
+
+            ps.setString(1, "%" + name + "%");
 
             rs = ps.executeQuery();
 
@@ -236,8 +309,6 @@ public class BookDAO implements DAO<BookBean> {
         }
         return b;
     }
-    
-    
 
 //    public List<BookBean> getBooksList() throws Exception {
 //        String query = "select * from Books";
