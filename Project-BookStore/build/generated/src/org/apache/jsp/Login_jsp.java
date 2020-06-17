@@ -3,6 +3,7 @@ package org.apache.jsp;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
+import com.bookstore.bean.UserBean;
 import java.sql.DriverManager;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -61,6 +62,7 @@ public final class Login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("\n");
       out.write("\n");
+      out.write("\n");
       out.write("<!DOCTYPE html>\n");
       out.write("<html>\n");
       out.write("    <head>\n");
@@ -96,21 +98,41 @@ public final class Login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                                    <option value=\"Author\"> Author </option>\n");
       out.write("                                    <option value=\"Category\"> Category </option>\n");
       out.write("                                </select> \n");
-      out.write("                                \n");
+      out.write("\n");
       out.write("                            </div>\n");
       out.write("\n");
       out.write("                        </ol>\n");
       out.write("                    </form>\n");
       out.write("\n");
       out.write("                    <ul class=\"nav navbar-nav navbar-right\">\n");
+      out.write("\n");
+      out.write("                        ");
+
+                            UserBean ubean = (UserBean) session.getAttribute("userBean");
+
+                            if (ubean == null) {
+                                // đã login
+                        
+      out.write("\n");
       out.write("                        <li class=\"dropdown\">\n");
       out.write("                            <a href=\"./Login.jsp\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-expanded=\"false\"> <span class=\"caret\"></span>Sign in</a>\n");
-      out.write("                            <ul class=\"dropdown-menu\" role=\"menu\">\n");
-      out.write("                                <li><a href=\"./CustomerAccount.jsp\">Account</a></li>\n");
-      out.write("                                <li class=\"divider\"></li>\n");
-      out.write("                                <li><a href=\"./logout.jsp\">Logout</a></li>\n");
-      out.write("                            </ul>\n");
       out.write("                        </li>\n");
+      out.write("                        ");
+
+                        } else {
+                            // chưa login
+                        
+      out.write("\n");
+      out.write("\n");
+      out.write("                        <li class=\"dropdown\">\n");
+      out.write("                            <a href=\"./Logout.jsp\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-expanded=\"false\"> <span class=\"caret\"></span>Logout</a>\n");
+      out.write("                        </li>\n");
+      out.write("                        ");
+
+                            }
+                        
+      out.write("\n");
+      out.write("\n");
       out.write("\n");
       out.write("\n");
       out.write("                        <li class=\"dropdown\">\n");
@@ -142,6 +164,7 @@ public final class Login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <link rel=\"stylesheet\" type=\"text/css\" href=\"newcss.css\">\n");
       out.write("        <link rel=\"stylesheet\" href=\"https://use.fontawesome.com/releases/v5.8.1/css/all.css\">\n");
       out.write("        <link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css?family=Lato&display=swap\">\n");
+      out.write("        <script src=\"checkSignUp.js\"></script>\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
       out.write("        <div class=\"main\">\n");
@@ -157,7 +180,7 @@ public final class Login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                            <span>Password</span>\n");
       out.write("                            <input type=\"password\" name=\"password\">\n");
       out.write("                        </label>\n");
-      out.write("                        <button class=\"submit\" type=\"button\">Sign In</button>\n");
+      out.write("                        <button class=\"submit\" type=\"submit\">Sign In</button>\n");
       out.write("                        <p class=\"forgot-pass\">Forgot Password ?</p>\n");
       out.write("\n");
       out.write("                        <div class=\"social-media\">\n");
@@ -195,33 +218,33 @@ public final class Login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                            <h2>Sign Up</h2>\n");
       out.write("                            <label>\n");
       out.write("                                <span>Full Name</span>\n");
-      out.write("                                <input type=\"text\" class=\"fullname\" name=\"fName\">\n");
+      out.write("                                <input type=\"text\" class=\"fullname\" name=\"fName\" id=\"fName\">\n");
       out.write("                            </label>\n");
       out.write("                            <label>\n");
       out.write("                                <span>Username</span>\n");
-      out.write("                                <input type=\"text\" class=\"username\" name=\"username\">\n");
+      out.write("                                <input type=\"text\" class=\"username\" name=\"username\" id=\"username\">\n");
       out.write("                            </label>\n");
       out.write("                            <label>\n");
       out.write("                                <span>Password</span>\n");
-      out.write("                                <input type=\"password\" class=\"password\" name=\"pass\">\n");
+      out.write("                                <input type=\"password\" class=\"password\" name=\"pass\" id=\"pass\">\n");
       out.write("                            </label>\n");
       out.write("                            <label>\n");
       out.write("                                <span>Confirm Password</span>\n");
-      out.write("                                <input type=\"password\" class=\"confirm_password\">\n");
+      out.write("                                <input type=\"password\" class=\"confirm_password\" id=\"confirm_password\">\n");
       out.write("                            </label>\n");
       out.write("                            <label>\n");
       out.write("                                <span>Address</span>\n");
-      out.write("                                <input type=\"text\" class=\"address\" name=\"address\">\n");
+      out.write("                                <input type=\"text\" class=\"address\" name=\"address\" id=\"address\">\n");
       out.write("                            </label>\n");
       out.write("                            <label>\n");
       out.write("                                <span>Phone</span>\n");
-      out.write("                                <input type=\"text\" class=\"phone\" name=\"phone\">\n");
+      out.write("                                <input type=\"text\" class=\"phone\" name=\"phone\" id=\"phone\">\n");
       out.write("                            </label>\n");
       out.write("                            <label>\n");
       out.write("                                <span>Email</span>\n");
-      out.write("                                <input type=\"email\" class=\"email\" name=\"email\">\n");
+      out.write("                                <input type=\"email\" class=\"email\" name=\"email\" id=\"email\">\n");
       out.write("                            </label>\n");
-      out.write("                            <button type=\"button\" class=\"submit\">Sign Up Now</button>\n");
+      out.write("                            <button type=\"submit\" class=\"submit\" onclick=\"getCheck()\">Sign Up Now</button>\n");
       out.write("                        </div>\n");
       out.write("                    </form>\n");
       out.write("                </div>\n");

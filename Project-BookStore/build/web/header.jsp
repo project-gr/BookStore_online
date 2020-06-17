@@ -4,6 +4,7 @@
     Author     : ADMIN
 --%>
 
+<%@page import="com.bookstore.bean.UserBean"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page import="java.sql.DriverManager"%>
@@ -45,21 +46,35 @@
                                     <option value="Author"> Author </option>
                                     <option value="Category"> Category </option>
                                 </select> 
-                                
+
                             </div>
 
                         </ol>
                     </form>
 
                     <ul class="nav navbar-nav navbar-right">
+
+                        <%
+                            UserBean ubean = (UserBean) session.getAttribute("userBean");
+
+                            if (ubean == null) {
+                                // đã login
+                        %>
                         <li class="dropdown">
                             <a href="./Login.jsp" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> <span class="caret"></span>Sign in</a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="./CustomerAccount.jsp">Account</a></li>
-                                <li class="divider"></li>
-                                <li><a href="./logout.jsp">Logout</a></li>
-                            </ul>
                         </li>
+                        <%
+                        } else {
+                            // chưa login
+                        %>
+
+                        <li class="dropdown">
+                            <a href="./Logout.jsp" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> <span class="caret"></span>Logout</a>
+                        </li>
+                        <%
+                            }
+                        %>
+
 
 
                         <li class="dropdown">

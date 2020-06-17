@@ -76,11 +76,11 @@ public final class header_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                </div>\n");
       out.write("\n");
       out.write("                <div id=\"navbar\" class=\"navbar-collapse collapse\">\n");
-      out.write("                    <form class=\"navbar-form navbar-left\" method=\"post\" action=\"SearchServlet\">\n");
+      out.write("                    <form class=\"navbar-form navbar-left\" method=\"post\" action=\"SearchControl\">\n");
       out.write("\n");
       out.write("                        <ol type=\"circle\">\n");
       out.write("\n");
-      out.write("                            \n");
+      out.write("                            <div class=\"searchBox\">\n");
       out.write("                                <input class=\"form-control\" name=\"search\" id=\"search\" size=\"40\" type=\"text\" placeholder=\"Search\">\n");
       out.write("\n");
       out.write("                                <select class=\"form-control\" name=\"type\">\n");
@@ -89,7 +89,7 @@ public final class header_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                                    <option value=\"Category\"> Category </option>\n");
       out.write("                                </select> \n");
       out.write("                                \n");
-      out.write("                                <input type=\"submit\" value=\"Search\">\n");
+      out.write("                            </div>\n");
       out.write("\n");
       out.write("                        </ol>\n");
       out.write("                    </form>\n");

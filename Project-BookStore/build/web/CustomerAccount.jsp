@@ -19,10 +19,9 @@
         <link rel="stylesheet" href="customer_account.css">
     </head>
     <body>
-        <% 
-            String username = (String) request.getAttribute("username");
+        <%            String username = (String) request.getAttribute("username");
             UserDAO userDAO = new UserDAO();
-            UserBean userBean = userDAO.getUser(username);
+            UserBean userBean = (UserBean) session.getAttribute("userBean");
             String fName = "", address = "", phone = "", email = "";
             if (userBean == null) {
                 response.sendRedirect("Login.jsp");
@@ -31,34 +30,34 @@
                 address = userBean.getAddress();
                 phone = userBean.getPhone();
                 email = userBean.getEmail();
-            }
         %>
+
         <a href="Login.jsp"></a>
-        <center> 
+    <center> 
         <form method="post" action="InfoControl">
             <ol type="circle">
-                
-                <input type="hidden" name="username" value="<%=username %>">
+
+                <input type="hidden" name="username" value="<%=username%>">
 
                 <table>
                     <tr>
                         <td><li> Full name: </td>
-                    <td><input type="text" name="fName" value="<%=fName %>" required> </td>
+                    <td><input type="text" name="fName" value="<%=fName%>" required> </td>
                     </tr>
 
                     <tr>
                         <td><li> Address: </td>
-                    <td><input type="text" name="address" value="<%=address %>" required> </td>
+                    <td><input type="text" name="address" value="<%=address%>" required> </td>
                     </tr>
-                    
+
                     <tr>
                         <td><li> Phone </td>
-                    <td><input type="text" name="phone"vvalue="<%=phone %>" required> </td>
+                    <td><input type="text" name="phone"vvalue="<%=phone%>" required> </td>
                     </tr>
 
                     <tr>
                         <td><li> Email: </td>
-                    <td><input type="text" name="Email"value="<%=email %>" required> </td>
+                    <td><input type="text" name="Email"value="<%=email%>" required> </td>
                     </tr>
 
                     <tr>
@@ -71,6 +70,9 @@
             </ol>
         </form>
     </center>
+    <%
+        }
+    %>
 </body>
 </html>
 

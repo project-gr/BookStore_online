@@ -21,6 +21,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -55,32 +56,40 @@ public class LoginControl extends HttpServlet {
             UserDAO userDAO = new UserDAO();
             UserBean userBean = userDAO.checklogin(username, password);
 
+            HttpSession session = request.getSession();
+            session.setAttribute("userBean", userBean);
+
             if (userBean == null) {
                 request.getRequestDispatcher("Login.jsp").include(request, response);
                 out.println("<div><h1><b><i> Sorry username or password error!</h1></div>");
 
             } else if (userBean.getIs_staff() == 0) {
+//                session.setAttribute("userBean", userBean);
+
                 request.setAttribute("username", username);
-                request.getRequestDispatcher("CustomerAccount.jsp").include(request, response);
+                request.getRequestDispatcher("CustomerAccount.jsp").forward(request, response);
             } else {
+//                session.setAttribute("userBean", userBean);
+
                 request.setAttribute("username", username);
-                request.getRequestDispatcher("StaffAccount.jsp").include(request, response);
+                request.getRequestDispatcher("StaffAccount.jsp").forward(request, response);
             }
+
         } catch (Exception e) {
         }
     }
 
 // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-/**
- * Handles the HTTP <code>GET</code> method.
- *
- * @param request servlet request
- * @param response servlet response
- * @throws ServletException if a servlet-specific error occurs
- * @throws IOException if an I/O error occurs
- */
-@Override
-        protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    /**
+     * Handles the HTTP <code>GET</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
@@ -94,7 +103,7 @@ public class LoginControl extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-        protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
@@ -105,7 +114,7 @@ public class LoginControl extends HttpServlet {
      * @return a String containing servlet description
      */
     @Override
-        public String getServletInfo() {
+    public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
 
