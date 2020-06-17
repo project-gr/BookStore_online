@@ -46,7 +46,6 @@
                                     <option value="Category"> Category </option>
                                 </select> 
                                 
-                                <input type="submit" value="Search">
                             </div>
 
                         </ol>
