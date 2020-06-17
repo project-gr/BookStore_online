@@ -8,6 +8,7 @@
 <%@page import="com.bookstore.bean.BookBean"%>
 <%@page import="com.bookstore.dao.BookDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ include file="header.jsp" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -27,7 +28,6 @@
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
-
 
     <center>
         <div class="row">
@@ -59,7 +59,7 @@
                             </div>
                         </div>
                     </div>
-
+ 
                     <%
                         }
                     %>
@@ -67,5 +67,6 @@
             </div>
         </div>
     </center>
-</body>
+
+    </body>
 </html>

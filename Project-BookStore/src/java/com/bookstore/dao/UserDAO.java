@@ -35,7 +35,44 @@ public class UserDAO implements DAO<UserBean>{
             rs = ps.executeQuery();
             
             while (rs.next()){
-                UserBean userBean = new UserBean(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getByte(7), rs.getDate(8), rs.getString(9));
+                UserBean userBean = new UserBean(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getByte(7), rs.getDate(8));
+                return userBean;
+            }
+        } catch (Exception e) {
+        }
+        return null;
+    }
+    
+    public boolean updateInfo(String username, String fName, String address, String phone, String email) {
+        boolean b = false;
+        try{
+            String query = "update users set fName = " +
+                    fName + ", address = " +
+                    address+ ", phone = " + phone +", email = " +
+                    email + "where  username = " + username;
+            conn = DBcontext.getConnection();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            
+            b = true;
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+        return b;
+    }
+    
+    public UserBean getUser(String username){
+        try {
+            String query = "select * from users where username = ?";
+            conn = DBcontext.getConnection();
+            ps = conn.prepareStatement(query);
+            
+            ps.setString(1, username);
+            
+            rs = ps.executeQuery();
+            
+            while (rs.next()){
+                UserBean userBean = new UserBean(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getByte(7), rs.getDate(8));
                 return userBean;
             }
         } catch (Exception e) {
@@ -65,7 +102,6 @@ public class UserDAO implements DAO<UserBean>{
                 userBean.setEmail(rs.getString(6));
                 userBean.setIs_staff(rs.getByte(7));
                 userBean.setSignup_date(rs.getDate(8));
-                userBean.setAvatar(rs.getString(9));
                 
                 userList.add(userBean);
                 
@@ -98,7 +134,6 @@ public class UserDAO implements DAO<UserBean>{
                 userBean.setEmail(rs.getString(6));
                 userBean.setIs_staff(rs.getByte(7));
                 userBean.setSignup_date(rs.getDate(8));
-                userBean.setAvatar(rs.getString(9));
                 
                 userList.add(userBean);
             }

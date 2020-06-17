@@ -22,12 +22,11 @@ public class UserBean {
     private String email;
     private int is_staff;
     private Date signup_date;
-    private String avatar;
 
     public UserBean() {
     }
 
-    public UserBean(String username, String pass, String fName, String address, String phone, String email, int is_staff, Date signup_date, String avatar) {
+    public UserBean(String username, String pass, String fName, String address, String phone, String email, int is_staff, Date signup_date) {
         this.username = username;
         this.pass = pass;
         this.fName = fName;
@@ -36,7 +35,6 @@ public class UserBean {
         this.email = email;
         this.is_staff = is_staff;
         this.signup_date = signup_date;
-        this.avatar = avatar;
     }
 
     public String getUsername() {
@@ -103,12 +101,4 @@ public class UserBean {
         this.signup_date = signup_date;
     }
 
-    public String getAvatar() {
-        return avatar;
-    }
-
-    public void setAvatar(String avatar) {
-        this.avatar = avatar;
-    }
-    
 }

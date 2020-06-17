@@ -4,6 +4,8 @@
     Author     : ADMIN
 --%>
 
+<%@page import="com.bookstore.bean.BookBean"%>
+<%@page import="com.bookstore.dao.BookDAO"%>
 <%@page import="com.bookstore.dao.UserDAO"%>
 <%@page import="com.bookstore.bean.UserBean"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -17,37 +19,60 @@
         <link rel="stylesheet" href="customer_account.css">
     </head>
     <body>
-        <% String username = (String) request.getAttribute("username");%>
-        <c:forEach items="${userList.getElement(username)}" var="user">
-            <div style="margin:3px; padding:10px;">
-                <div class="row">
-                    <div class="col-md-4">
-                        
-                        <form action="Avatar?username=${user.getUsername()}" method="post" enctype="multipart/form-data">
-                            <div class="div1" style="background-image: ${user.getAvatar()};
-                                 background-size: cover;
-                                 width: 150px;
-                                 height: 150px;
-                                 border-radius: 50%;"></div>
+        <%            String username = (String) request.getAttribute("username");
+            UserDAO userDAO = new UserDAO();
+            UserBean userBean = (UserBean) session.getAttribute("userBean");
+            String fName = "", address = "", phone = "", email = "";
+            if (userBean == null) {
+                response.sendRedirect("Login.jsp");
+            } else {
+                fName = userBean.getfName();
+                address = userBean.getAddress();
+                phone = userBean.getPhone();
+                email = userBean.getEmail();
+        %>
 
-                            <input type="file" placeholder="Cover Image" name="coverImage" id="coverImage"/>
-                            <button class="button" type="submit">Add Avatar</button>
-                        </form>
+        <a href="Login.jsp"></a>
+    <center> 
+        <form method="post" action="InfoControl">
+            <ol type="circle">
 
-                        <form action="Logout.jsp">
-                            <input type="submit" value="Logout">
-                        </form>
-                    </div>
-                    <div class="col-md-8" style="text-align: left; padding-left:10px;">
-                        <h4>${user.getfName()}</h4>
-                        <h5>${user.getEmail()}</h5>
-                        <h5>${user.getPhone()}</h5>
-                        <h5>${user.getAddress()}</h5>
-                        <h5>${user.getSignup_date()}</h5>
-                        &nbsp;
-                    </div>
-                </div>
-            </div>
-        </c:forEach>
-    </body>
+                <input type="hidden" name="username" value="<%=username%>">
+
+                <table>
+                    <tr>
+                        <td><li> Full name: </td>
+                    <td><input type="text" name="fName" value="<%=fName%>" required> </td>
+                    </tr>
+
+                    <tr>
+                        <td><li> Address: </td>
+                    <td><input type="text" name="address" value="<%=address%>" required> </td>
+                    </tr>
+
+                    <tr>
+                        <td><li> Phone </td>
+                    <td><input type="text" name="phone"vvalue="<%=phone%>" required> </td>
+                    </tr>
+
+                    <tr>
+                        <td><li> Email: </td>
+                    <td><input type="text" name="Email"value="<%=email%>" required> </td>
+                    </tr>
+
+                    <tr>
+                        <td><li> <input type="submit" value="Update"></td>
+                    <td> <input type="reset" name="Reset"> </td>
+                    </tr>
+
+                </table>
+
+            </ol>
+        </form>
+    </center>
+    <%
+        }
+    %>
+</body>
 </html>
+
