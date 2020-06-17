@@ -3,6 +3,8 @@ package org.apache.jsp;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
+import com.bookstore.bean.BookBean;
+import com.bookstore.dao.BookDAO;
 import com.bookstore.dao.UserDAO;
 import com.bookstore.bean.UserBean;
 import java.sql.DriverManager;
@@ -22,20 +24,10 @@ public final class CustomerAccount_jsp extends org.apache.jasper.runtime.HttpJsp
     _jspx_dependants.add("/header.jsp");
   }
 
-  private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_c_forEach_var_items;
-
   private org.glassfish.jsp.api.ResourceInjector _jspx_resourceInjector;
 
   public java.util.List<String> getDependants() {
     return _jspx_dependants;
-  }
-
-  public void _jspInit() {
-    _jspx_tagPool_c_forEach_var_items = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
-  }
-
-  public void _jspDestroy() {
-    _jspx_tagPool_c_forEach_var_items.release();
   }
 
   public void _jspService(HttpServletRequest request, HttpServletResponse response)
@@ -62,6 +54,8 @@ public final class CustomerAccount_jsp extends org.apache.jasper.runtime.HttpJsp
       _jspx_out = out;
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
+      out.write("\n");
+      out.write("\n");
       out.write("\n");
       out.write("\n");
       out.write("\n");
@@ -114,18 +108,19 @@ public final class CustomerAccount_jsp extends org.apache.jasper.runtime.HttpJsp
       out.write("                </div>\n");
       out.write("\n");
       out.write("                <div id=\"navbar\" class=\"navbar-collapse collapse\">\n");
-      out.write("                    <form class=\"navbar-form navbar-left\" method=\"post\" action=\"DaoControl\">\n");
+      out.write("                    <form class=\"navbar-form navbar-left\" method=\"post\" action=\"SearchControl\">\n");
       out.write("\n");
       out.write("                        <ol type=\"circle\">\n");
       out.write("\n");
       out.write("                            <div class=\"searchBox\">\n");
-      out.write("                                <input class=\"form-control\" name=\"search-query\" id=\"search-query\" size=\"40\" type=\"text\" placeholder=\"Search\">\n");
+      out.write("                                <input class=\"form-control\" name=\"search\" id=\"search\" size=\"40\" type=\"text\" placeholder=\"Search\">\n");
       out.write("\n");
       out.write("                                <select class=\"form-control\" name=\"type\">\n");
       out.write("                                    <option value=\"Book\"> Book </option>\n");
       out.write("                                    <option value=\"Author\"> Author </option>\n");
       out.write("                                    <option value=\"Category\"> Category </option>\n");
       out.write("                                </select> \n");
+      out.write("                                \n");
       out.write("                            </div>\n");
       out.write("\n");
       out.write("                        </ol>\n");
@@ -150,7 +145,7 @@ public final class CustomerAccount_jsp extends org.apache.jasper.runtime.HttpJsp
       out.write("                                <li><a href=\"./UserLookup\">View Users</a></li>\n");
       out.write("                            </ul>\n");
       out.write("                        </li>\n");
-      out.write("                        <li><a href=\"./Checkout.jsp\">Cart</a></li>\n");
+      out.write("                        <li><a href=\"./Check.jsp\">Cart</a></li>\n");
       out.write("                    </ul>\n");
       out.write("                </div>\n");
       out.write("            </div>\n");
@@ -162,37 +157,76 @@ public final class CustomerAccount_jsp extends org.apache.jasper.runtime.HttpJsp
       out.write("    </body>\n");
       out.write("</html>\n");
       out.write("\n");
+      out.write("        <link rel=\"stylesheet\" href=\"customer_account.css\">\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
       out.write("        ");
- String username = (String) request.getAttribute("username");
+ 
+            String username = (String) request.getAttribute("username");
+            UserDAO userDAO = new UserDAO();
+            UserBean userBean = userDAO.getUser(username);
+            String fName = "", address = "", phone = "", email = "";
+            if (userBean == null) {
+                response.sendRedirect("Login.jsp");
+            } else {
+                fName = userBean.getfName();
+                address = userBean.getAddress();
+                phone = userBean.getPhone();
+                email = userBean.getEmail();
+            }
+        
       out.write("\n");
-      out.write("        ");
-      if (_jspx_meth_c_forEach_0(_jspx_page_context))
-        return;
+      out.write("        <a href=\"Login.jsp\"></a>\n");
+      out.write("        <center> \n");
+      out.write("        <form method=\"post\" action=\"InfoControl?action=customer\">\n");
+      out.write("            <ol type=\"circle\">\n");
+      out.write("                \n");
+      out.write("                <input type=\"hidden\" name=\"username\" value=\"");
+      out.print(username );
+      out.write("\">\n");
       out.write("\n");
+      out.write("                <table>\n");
+      out.write("                    <tr>\n");
+      out.write("                        <td><li> Full name: </td>\n");
+      out.write("                    <td><input type=\"text\" name=\"fName\" value=\"");
+      out.print(fName );
+      out.write("\" required> </td>\n");
+      out.write("                    </tr>\n");
       out.write("\n");
+      out.write("                    <tr>\n");
+      out.write("                        <td><li> Address: </td>\n");
+      out.write("                    <td><input type=\"text\" name=\"address\" value=\"");
+      out.print(address );
+      out.write("\" required> </td>\n");
+      out.write("                    </tr>\n");
+      out.write("                    \n");
+      out.write("                    <tr>\n");
+      out.write("                        <td><li> Phone </td>\n");
+      out.write("                    <td><input type=\"text\" name=\"phone\"vvalue=\"");
+      out.print(phone );
+      out.write("\" required> </td>\n");
+      out.write("                    </tr>\n");
       out.write("\n");
-      out.write("        <table>\n");
-      out.write("            <tr>\n");
-      out.write("                <th> User Name </th>\n");
-      out.write("                <th> Pass </th>\n");
-      out.write("                <th> Full Name </th>\n");
-      out.write("                <th> Address </th>\n");
-      out.write("                <th> Phone </th>\n");
-      out.write("                <th> Email </th>\n");
-      out.write("                <th> Sign up date </th>\n");
-      out.write("                <th> &nbsp; </th>\n");
-      out.write("            </tr>\n");
+      out.write("                    <tr>\n");
+      out.write("                        <td><li> Email: </td>\n");
+      out.write("                    <td><input type=\"text\" name=\"Email\"value=\"");
+      out.print(email );
+      out.write("\" required> </td>\n");
+      out.write("                    </tr>\n");
       out.write("\n");
-      out.write("        </table>\n");
-      out.write("        <div class=\"right\">\n");
-      out.write("            <form action=\"Logout.jsp\">\n");
-      out.write("                <input type=\"submit\" value=\"Logout\">\n");
-      out.write("            </form>\n");
-      out.write("        </div>\n");
-      out.write("    </body>\n");
-      out.write("</html>");
+      out.write("                    <tr>\n");
+      out.write("                        <td><li> <input type=\"submit\" name=\"Login\"> </td>\n");
+      out.write("                    <td> <input type=\"reset\" name=\"Reset\"> </td>\n");
+      out.write("                    </tr>\n");
+      out.write("\n");
+      out.write("                </table>\n");
+      out.write("\n");
+      out.write("            </ol>\n");
+      out.write("        </form>\n");
+      out.write("    </center>\n");
+      out.write("</body>\n");
+      out.write("</html>\n");
+      out.write("\n");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
         out = _jspx_out;
@@ -204,68 +238,5 @@ public final class CustomerAccount_jsp extends org.apache.jasper.runtime.HttpJsp
     } finally {
       _jspxFactory.releasePageContext(_jspx_page_context);
     }
-  }
-
-  private boolean _jspx_meth_c_forEach_0(PageContext _jspx_page_context)
-          throws Throwable {
-    PageContext pageContext = _jspx_page_context;
-    JspWriter out = _jspx_page_context.getOut();
-    //  c:forEach
-    org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_forEach_0 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _jspx_tagPool_c_forEach_var_items.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
-    _jspx_th_c_forEach_0.setPageContext(_jspx_page_context);
-    _jspx_th_c_forEach_0.setParent(null);
-    _jspx_th_c_forEach_0.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${userList.getElement(username)}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
-    _jspx_th_c_forEach_0.setVar("user");
-    int[] _jspx_push_body_count_c_forEach_0 = new int[] { 0 };
-    try {
-      int _jspx_eval_c_forEach_0 = _jspx_th_c_forEach_0.doStartTag();
-      if (_jspx_eval_c_forEach_0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
-        do {
-          out.write("\n");
-          out.write("            <div class=\"col-md-4\" style=\"padding: 5px;\">\n");
-          out.write("                <div style=\"margin:3px; padding:10px; background-color: black;\">\n");
-          out.write("                    <div class=\"row\">\n");
-          out.write("                        <div class=\"col-md-4\">\n");
-          out.write("                            <a href=\"Photography.html\"><div class=\"div1\"></div></a>\n");
-          out.write("                        </div>\n");
-          out.write("                        <div class=\"col-md-8\" style=\"text-align: left; padding-left:10px;\">\n");
-          out.write("                            <h4>");
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${user.getfName()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-          out.write("</h4>\n");
-          out.write("                            <h5>");
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${user.getEmail()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-          out.write("</h5>\n");
-          out.write("                            <h5>");
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${user.getPhone()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-          out.write("</h5>\n");
-          out.write("                            <h5>");
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${user.getAddress()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-          out.write("</h5>\n");
-          out.write("                            <h5>");
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${user.getSignup_date()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-          out.write("</h5>\n");
-          out.write("                            &nbsp;\n");
-          out.write("                        </div>\n");
-          out.write("                    </div>\n");
-          out.write("                </div>\n");
-          out.write("            </div>\n");
-          out.write("        ");
-          int evalDoAfterBody = _jspx_th_c_forEach_0.doAfterBody();
-          if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
-            break;
-        } while (true);
-      }
-      if (_jspx_th_c_forEach_0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-        return true;
-      }
-    } catch (Throwable _jspx_exception) {
-      while (_jspx_push_body_count_c_forEach_0[0]-- > 0)
-        out = _jspx_page_context.popBody();
-      _jspx_th_c_forEach_0.doCatch(_jspx_exception);
-    } finally {
-      _jspx_th_c_forEach_0.doFinally();
-      _jspx_tagPool_c_forEach_var_items.reuse(_jspx_th_c_forEach_0);
-    }
-    return false;
   }
 }

@@ -21,4 +21,13 @@ and open the template in the editor.
     resize: horizontal;
     overflow: auto;
 }
+body{
+    background-color: black;
+}
+h1{
+    color: white;
+}
 
+h5{
+    color: black;
+}
