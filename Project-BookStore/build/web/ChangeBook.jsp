@@ -16,7 +16,7 @@
     <body>
         <form action="ChangeBook" method="post" enctype="multipart/form-data">
             <center>
-                <h1>Add Book</h1>
+                <h1>Change Book</h1>
                 <table>
                     <tr>
                         <td class ="color_text">ISBN:</td>
@@ -54,7 +54,7 @@
                     </tr>
                 </table>
                 <div class="btn-group">
-                    <button type="submit" class="btn btn-primary" style="background-color: white; color: black;">Add Book</button>
+                    <button type="submit" class="btn btn-primary" style="background-color: white; color: black;">Change Book</button>
                     <button type="reset" class="btn btn-primary" style="background-color: white; color: black;">Cancel</button>
                 </div>
             </center>

@@ -24,6 +24,7 @@ public class UserBean {
     private Date signup_date;
 
     public UserBean() {
+        this.is_staff = 0;
     }
 
     public UserBean(String username, String pass, String fName, String address, String phone, String email, int is_staff, Date signup_date) {
@@ -36,6 +37,7 @@ public class UserBean {
         this.is_staff = is_staff;
         this.signup_date = signup_date;
     }
+
 
     public String getUsername() {
         return username;

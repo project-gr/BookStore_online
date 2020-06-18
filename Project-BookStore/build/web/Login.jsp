@@ -16,7 +16,7 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato&display=swap">
         <script src="checkSignUp.js"></script>
-        
+
         <style>
             h2{
                 color: #505f75;
@@ -34,14 +34,16 @@
                         <h2>Sign In</h2>
                         <label>
                             <span>Username</span>
-                            <input type="username" name="username">
+                            <input type="username" name="username" required>
                         </label>
                         <label>
                             <span>Password</span>
-                            <input type="password" name="password">
+                            <input type="password" name="password" required>
                         </label>
                         <button class="submit" type="submit">Sign In</button>
-                        <p class="forgot-pass">Forgot Password ?</p>
+
+                        <p class="forgot-pass"><a href="forgotPassword.jsp">Forgot Password ?</a></p>
+
 
                         <div class="social-media">
                             <ul>
@@ -52,8 +54,8 @@
                         </div>
                     </div>
                 </form>
-                
-                
+
+
                 <div class="sub-cont">
                     <div class="img">
                         <div class="img-text m-up">
@@ -71,9 +73,9 @@
                             <span class="m-in">Sign In</span>
                         </div>
                     </div>
-                    
-                    
-                    <form action="SignUpServlet" method="post" class="form-signup" enctype="multipart/form-data">
+
+
+                    <form action="SignUpServlet" method="post" class="form-signup">
                         <div class="form sign-up">
                             <label>
                                 <span>Full Name</span>

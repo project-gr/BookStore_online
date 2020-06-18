@@ -20,7 +20,7 @@
         <%            String username = (String) request.getAttribute("username");
             UserDAO userDAO = new UserDAO();
             UserBean userBean = (UserBean) session.getAttribute("userBean");
-            String fName = "", address = "", phone = "", email = "";
+            String fName = "", address = "", passwd="", phone = "", email = "";
             if (userBean == null) {
                 response.sendRedirect("Login.jsp");
             } else {
@@ -28,6 +28,8 @@
                 address = userBean.getAddress();
                 phone = userBean.getPhone();
                 email = userBean.getEmail();
+                username = userBean.getUsername();
+                passwd = userBean.getPass();
         %>
 
     <center> 
@@ -36,7 +38,7 @@
             <div class="main">
                 <div class="profile-card">
                     <div class="image-container">
-                        <img src="https://xansan.com/wp-content/uploads/2018/10/user-avatar-default-2609.png">
+                        <img src="https://xansan.com/wp-content/uploads/2018/10/user-avatar-default-2609.png"  style="height: 300px; width: 300px;">
                         <div class="title">
                             <h2><%=fName%></h2>
                         </div>
@@ -51,13 +53,16 @@
                             <tr>
                                 <td><i class="fa fa-envelope info"></i></td>
                                 <td>Email</td>
-                                <td><input type="text" name="Email"value="<%=email%>" required></td>
+                                <td><input type="text" name="email"value="<%=email%>" required></td>
                             </tr>
                             <tr>
                                 <td><i class="fa fa-phone info"></i></td>
                                 <td>Phone</td>
                                 <td><input type="text" name="phone"vvalue="<%=phone%>" required></td>
                             </tr>
+                            <input type="hidden" name="isbn" value="<%=fName%>" />
+                            <input type="hidden" name="isbn" value="<%=username%>" />
+                            <input type="hidden" name="isbn" value="<%=passwd%>" />
                         </table>
                     </div>
                     <br>

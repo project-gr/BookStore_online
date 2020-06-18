@@ -43,13 +43,14 @@ public class UserDAO implements DAO<UserBean>{
         return null;
     }
     
-    public boolean updateInfo(String username, String fName, String address, String phone, String email) {
+    public boolean updateInfo(String username) {
         boolean b = false;
+        UserBean userBean = getUser(username);
         try{
             String query = "update users set fName = " +
-                    fName + ", address = " +
-                    address+ ", phone = " + phone +", email = " +
-                    email + "where  username = " + username;
+                    userBean.getfName() + ", address = " +
+                    userBean.getAddress()+ ", phone = " + userBean.getPhone() +", email = " +
+                    userBean.getEmail() + "where  username = " + username;
             conn = DBcontext.getConnection();
             ps = conn.prepareStatement(query);
             rs = ps.executeQuery();

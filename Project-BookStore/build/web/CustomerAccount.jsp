@@ -41,7 +41,7 @@
         <div class="main">
             <div class="profile-card">
                 <div class="image-container">
-                    <img src="https://xansan.com/wp-content/uploads/2018/10/user-avatar-default-2609.png">
+                    <img src="https://xansan.com/wp-content/uploads/2018/10/user-avatar-default-2609.png" style="height: 300px; width: 300px;">
                     <div class="title">
                         <h2><%=fName%></h2>
                     </div>

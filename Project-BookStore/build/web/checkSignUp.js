@@ -7,12 +7,12 @@
 
 function checkInfo() {
 
-    var fname = document.forms["form"]["fullname"].value;
+    var fName = document.forms["form"]["fName"].value;
     var username = document.forms["form"]["username"].value;
     var email = document.forms["form"]["email"].value;
-    var password = document.forms["form"]["password"].value;
-    var repassword = document.forms["form"]["repassword"].value;
-    if (fname === "") {
+    var pass = document.forms["form"]["pass"].value;
+    var confirm_password = document.forms["form"]["confirm_password"].value;
+    if (fName === "") {
         alert("Please input your fullname");
         return false;
     }
@@ -25,15 +25,15 @@ function checkInfo() {
         alert("Wrong eamail format, please input again!");
         return false;
     }
-    if (password === "") {
+    if (pass === "") {
         alert("Please input your password!");
         return false;
     }
-    if (repassword === "") {
+    if (confirm_password === "") {
         alert("Please input your confirm password!");
         return false;
     }
-    if (!(password === repassword)) {
+    if (!(pass === confirm_password)) {
         alert("Your re-password does not match with your password");
         return false;
     }
@@ -58,7 +58,7 @@ function getCheck() {
         setCookie(fullnameKey, fullname);
         setCookie(usernameKey, username);
         setCookie(emailKey, email);
-        setCookie(passwordKey, password);
+        setCookie(passwordKey, pass);
         var printString = fullnameKey + document.getElementById("fName").value + "\n" + emailKey + document.getElementById("email").value + "\n" + usernameKey + document.getElementById("username").value + "\n" + passwordKey + document.getElementById("pass").value;
         if (document.cookie.length !== 0) {
             alert(printString);
