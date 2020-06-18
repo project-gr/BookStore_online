@@ -16,6 +16,15 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato&display=swap">
         <script src="checkSignUp.js"></script>
+        
+        <style>
+            h2{
+                color: #505f75;
+            }
+            input{
+                color: #505f75;
+            }
+        </style>
     </head>
     <body>
         <div class="main">
@@ -66,7 +75,6 @@
                     
                     <form action="SignUpServlet" method="post" class="form-signup" enctype="multipart/form-data">
                         <div class="form sign-up">
-                            <h2>Sign Up</h2>
                             <label>
                                 <span>Full Name</span>
                                 <input type="text" class="fullname" name="fName" id="fName">

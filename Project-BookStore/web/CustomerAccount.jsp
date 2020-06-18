@@ -17,62 +17,66 @@
         <jsp:useBean id="userList" class="com.bookstore.dao.UserDAO" scope="request"></jsp:useBean>
         <%@ include file="header.jsp" %>
         <link rel="stylesheet" href="customer_account.css">
+        <link rel="stylesheet" type="text/css" href="newcss3.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
-    <body>
-        <%            String username = (String) request.getAttribute("username");
-            UserDAO userDAO = new UserDAO();
-            UserBean userBean = (UserBean) session.getAttribute("userBean");
-            String fName = "", address = "", phone = "", email = "";
-            if (userBean == null) {
-                response.sendRedirect("Login.jsp");
-            } else {
-                fName = userBean.getfName();
-                address = userBean.getAddress();
-                phone = userBean.getPhone();
-                email = userBean.getEmail();
-        %>
-
-        <a href="Login.jsp"></a>
-    <center> 
-        <form method="post" action="InfoControl">
-            <ol type="circle">
-
-                <input type="hidden" name="username" value="<%=username%>">
-
-                <table>
-                    <tr>
-                        <td><li> Full name: </td>
-                    <td><input type="text" name="fName" value="<%=fName%>" required> </td>
-                    </tr>
-
-                    <tr>
-                        <td><li> Address: </td>
-                    <td><input type="text" name="address" value="<%=address%>" required> </td>
-                    </tr>
-
-                    <tr>
-                        <td><li> Phone </td>
-                    <td><input type="text" name="phone"vvalue="<%=phone%>" required> </td>
-                    </tr>
-
-                    <tr>
-                        <td><li> Email: </td>
-                    <td><input type="text" name="Email"value="<%=email%>" required> </td>
-                    </tr>
-
-                    <tr>
-                        <td><li> <input type="submit" value="Update"></td>
-                    <td> <input type="reset" name="Reset"> </td>
-                    </tr>
-
-                </table>
-
-            </ol>
-        </form>
-    </center>
-    <%
-        }
+</head>
+<body>
+    <%            String username = (String) request.getAttribute("username");
+        UserDAO userDAO = new UserDAO();
+        UserBean userBean = (UserBean) session.getAttribute("userBean");
+        String fName = "", address = "", phone = "", email = "";
+        if (userBean == null) {
+            response.sendRedirect("Login.jsp");
+        } else {
+            fName = userBean.getfName();
+            address = userBean.getAddress();
+            phone = userBean.getPhone();
+            email = userBean.getEmail();
     %>
+
+<center> 
+    <form method="post" action="InfoControl">
+        <input type="hidden" name="username" value="<%=username%>">
+        <div class="main">
+            <div class="profile-card">
+                <div class="image-container">
+                    <img src="https://xansan.com/wp-content/uploads/2018/10/user-avatar-default-2609.png">
+                    <div class="title">
+                        <h2><%=fName%></h2>
+                    </div>
+                </div>
+                <div class="main-container">
+                    <table>
+                        <tr>
+                            <td><i class="fa fa-home info"></i></td>
+                            <td>Address</td>
+                            <td><input type="text" name="address" value="<%=address%>" required></td>
+                        </tr>
+                        <tr>
+                            <td><i class="fa fa-envelope info"></i></td>
+                            <td>Email</td>
+                            <td><input type="text" name="Email"value="<%=email%>" required></td>
+                        </tr>
+                        <tr>
+                            <td><i class="fa fa-phone info"></i></td>
+                            <td>Phone</td>
+                            <td><input type="text" name="phone"vvalue="<%=phone%>" required></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="btn-group">
+                    <button type="submit" class="btn btn-primary" style="background-color: white; color: black;">Save</button>
+                    <button type="reset" class="btn btn-primary" style="background-color: white; color: black;">Reset</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</center>
+<%
+    }
+%>
+
 </body>
 </html>
 

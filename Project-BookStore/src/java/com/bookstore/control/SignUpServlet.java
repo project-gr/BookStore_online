@@ -88,14 +88,6 @@ public class SignUpServlet extends HttpServlet {
             throws ServletException, IOException {
         PrintWriter out = response.getWriter();
 
-//      Folder save image
-        Part part = request.getPart("avatar");
-        String fileName = extractFileName(part);
-        String savePath = File.separator + fileName;
-        File fileSaveDir = new File(savePath);
-
-        part.write(savePath + File.separator);
-
         try {
 
             username = request.getParameter("username");
@@ -108,7 +100,7 @@ public class SignUpServlet extends HttpServlet {
             statement = connection.createStatement();
 
             String query = "insert into users values('" + username + "','" + pass + "','" + fName + "','"
-                    + address + "','" + phone + "','" + email + "','',''," + savePath + "');";
+                    + address + "','" + phone + "','" + email + "','','');";
             statement.execute(query);
             
 

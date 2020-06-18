@@ -1,40 +1,48 @@
-<%-- 
-    Document   : SignUp
-    Created on : Jun 15, 2020, 9:25:13 PM
-    Author     : ADMIN
---%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ include file="header.jsp" %>
 <!DOCTYPE html>
-<html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html lang="en" dir="ltr">
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-        
-        
-        <!--Css link-->
-        <link rel="stylesheet" href="signup.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+        <meta charset="utf-8">
+        <title></title>
+        <link rel="stylesheet" href="image.css">
+
     </head>
     <body>
-        <form action="SignUpServlet" method="post" class="form-signup" enctype="multipart/form-data">
-            <center>
-                <h1>Sign Up</h1>
-                <input type="text" class="form-control" placeholder="Username" name="username" id="username" required>
-<!--                <div id="status"></div>-->
-<!--                <script type="text/javascript" src="checkSignUp.js"></script>-->
-                
-                <input type="password" class="form-control" placeholder="Password" name="pass" required>
-                <input type="text" class="form-control" placeholder="Name" name="fName" required>
-                <input type="text" class="form-control" placeholder="Address" name="address">
-                <input type="text" class="form-control" placeholder="Phone Number" name="phone">
-                <input type="text" class="form-control" placeholder="Email" name="email">
-                <input type="file" class="form-control" name="avatar" id="avatar"/>
-                <br>
-                <input type="submit" class="btn btn-lg btn-primary btn-block" value="Sign Up">
-            </center>
-        </form>
+        <div class="slides">
+            <input type="radio" name="r" id="r1" checked>
+            <input type="radio" name="r" id="r2">
+            <input type="radio" name="r" id="r3">
+            <input type="radio" name="r" id="r4">
+            <input type="radio" name="r" id="r5">
+            <div class="slide s1">
+                <img src="https://www.catdumb.tv/wp-content/uploads/2019/12/hee.jpg" alt="">
+            </div> 
+            <div class="slide">
+                <img src="https://livestream.vn/wp-content/uploads/2018/10/p8.jpg" alt="">
+            </div> 
+            <div class="slide">
+                <img src="https://www.bestcasinosites.net/wp-content/uploads/2020/03/hating-on-girl-streamers.jpg" alt="">
+            </div>                
+            <div class="slide">
+                <img src="https://i.ytimg.com/vi/GtjYH_66aNY/maxresdefault.jpg" alt="">
+            </div>
+            <div class="slide">
+                <img src="https://archive.org/download/twitch-stream-alinity/twitch-stream-alinity.thumbs/Alinity%202019-11-26%2020_22-36296659632_000054.jpg" alt="">
+            </div>
+
+        </div>
+
+        <div class="navigation">
+            <label for="r1" class="bar"></label>
+            <label for="r2" class="bar"></label>
+            <label for="r3" class="bar"></label>
+            <label for="r4" class="bar"></label>
+            <label for="r5" class="bar"></label>
+        </div>
+
     </body>
 </html>
