@@ -297,7 +297,7 @@ public class BookDAO implements DAO<BookBean> {
         boolean b = false;
 
         try {
-            String query = "update Books set title = " + bookBean.getTitle() + ", price = "
+            String query = "update books set title = " + bookBean.getTitle() + ", price = "
                     + bookBean.getPrice() + ", publisher = "
                     + bookBean.getPublisher() + ", inventory = " + bookBean.getInventory()
                     + ", description = " + bookBean.getDescription()
@@ -313,6 +313,10 @@ public class BookDAO implements DAO<BookBean> {
         }
         return b;
     }
+    
+    
+    
+    
 
 //    public List<BookBean> getBooksList() throws Exception {
 //        String query = "select * from Books";

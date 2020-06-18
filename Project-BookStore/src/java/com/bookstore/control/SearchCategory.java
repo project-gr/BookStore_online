@@ -6,17 +6,11 @@
 package com.bookstore.control;
 
 import com.bookstore.bean.BookBean;
-import com.bookstore.context.DBcontext;
 import com.bookstore.dao.BookDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -27,13 +21,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author ADMIN
  */
-@WebServlet(name = "DeleteBook", urlPatterns = {"/DeleteBook"})
-public class DeleteBook extends HttpServlet {
-    
-    public DeleteBook() throws Exception {
-        this.connection = DBcontext.getConnection();
-    }
-
+@WebServlet(name = "SearchCategory", urlPatterns = {"/SearchCategory"})
+public class SearchCategory extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -48,6 +37,14 @@ public class DeleteBook extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            String categoryName = request.getParameter("categoryName");
+            
+            BookDAO bookDAO = new BookDAO();
+            List<BookBean> bookList = new ArrayList<BookBean>();
+            bookList = bookDAO.getBookByCategory(categoryName);
+            
+            request.setAttribute("bookList", bookList);
+            request.getRequestDispatcher("ShowBook.jsp").forward(request, response);
         }
     }
 
@@ -74,34 +71,10 @@ public class DeleteBook extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    String isbn;
-
-    Connection connection;
-    Statement statement = null; //step 4
-    PreparedStatement ps = null;
-    ResultSet rs = null;
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
-
-        try {
-
-            isbn = request.getParameter("isbn");
-
-            statement = connection.createStatement();
-            
-            BookDAO bookDAO = new BookDAO();
-            bookDAO.delete(isbn);
-            
-            response.sendRedirect("Home.jsp");
-            out.close();
-
-        } catch (SQLException ex) {
-            Logger.getLogger(AddBookServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        processRequest(request, response);
     }
 
     /**

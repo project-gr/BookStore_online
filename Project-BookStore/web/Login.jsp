@@ -110,5 +110,6 @@
             </div>
         </div>
         <script type="text/javascript" src="testjs.js"></script>
+        <%@ include file="Footer.jsp" %>
     </body>
 </html>

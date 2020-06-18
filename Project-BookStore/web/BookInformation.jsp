@@ -16,12 +16,18 @@
         <title>JSP Page</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
         <link rel="stylesheet" href="bookInfoStyle.css">
+        <style>
+            body{
+                background-color: black;
+                color: white;
+            }
+        </style>
     </head>
     <body>
-        
+
         <jsp:useBean id="book" scope="request" class="com.bookstore.bean.BookBean"></jsp:useBean>
         <jsp:setProperty name="book" property="*"></jsp:setProperty>
-            <div class="panel panel-default">
+            <div class="panel panel-default"  style="background-color: black;"> 
                 <div class="panel-heading">
                     <h3 class="panel-title">${book.title}</h3>
             </div>
@@ -29,19 +35,21 @@
                 <%
                     BookBean bookBean = (BookBean) request.getAttribute("bookBean");
                 %>
-                <div class="row">
+                <div class="row" style="background-color: black;">
                     <center>
                         <div class="column">
                             <form action="AddtoCart" method="post">
-                            <h1><b><%out.println(bookBean.getTitle());%></b></h1>
-                            <img src="images/<%out.println(bookBean.getCoverImage());%>" style="max-width: 300px; max-height: 300px">
+                                <h1><b><%out.println(bookBean.getTitle());%></b></h1>
+                                <img src="images/<%out.println(bookBean.getCoverImage());%>" style="max-width: 300px; max-height: 300px">
 
 
-                            <input type="hidden" name="isbn" value="${book.isbn}" />
-                            <input type="hidden" name="title" value="${book.title}" />
-                            <input type="hidden" name="quantity" value="1" />
-                            <br>
-                            <input type="submit" name="add" value="Add to Cart" />
+                                <input type="hidden" name="isbn" value="${book.isbn}" />
+                                <input type="hidden" name="title" value="${book.title}" />
+                                <input type="hidden" name="quantity" value="1" />
+                                <br>
+                                <br>
+
+                                <button type="submit"  name="add" class="btn btn-primary" style="background-color: white; color: black;">Add to Cart</button>
                             </form>
                         </div>
                     </center>
@@ -94,6 +102,7 @@
 
                 </div>
             </div>
-
+        </div>
+        <%@ include file="Footer.jsp" %>
     </body>
 </html>

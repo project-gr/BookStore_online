@@ -85,32 +85,8 @@
                     </div>
 
                 <div>
-                    <h1>BEST SELLER</h1>
-                    <c:forEach items="${bookList.getRandom()}" var="book">
-                        <div class="col-md-4" style="padding: 5px;">
-                            <div style="margin:3px; padding:10px; background-color: #E5E8E8;">
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <img src="images/${book.getCoverImage()}" style="max-height: 130px; max-width: 110px;">
-                                    </div>
-                                    <div class="col-md-8" style="text-align: left; padding-left:10px;">
-
-                                        <a href="BookLookUp?isbn=${book.getIsbn()}">
-                                            <h4>${book.getTitle()}</h4>
-                                        </a>
-                                        <h5> ${book.getIsbn()} </h5>
-                                        <h5> $ ${book.getPrice()} </h5>
-                                        &nbsp;
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </c:forEach>
-                </div>
-
-                <div>
-                    <h1>RECOMMEND FOR YOU</h1>
-                    <c:forEach items="${bookList.getRandom()}" var="book">
+                    <h1>ALL BOOKS</h1>
+                    <c:forEach items="${bookList.getList()}" var="book">
                         <div class="col-md-4" style="padding: 5px;">
                             <div style="margin:3px; padding:10px; background-color: #E5E8E8;">
                                 <div class="row">

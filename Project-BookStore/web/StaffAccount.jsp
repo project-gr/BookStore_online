@@ -77,8 +77,9 @@
         <div class="btn-group btn-group-lg">
             <button type="button" class="btn btn-primary" style="background-color: white; color: black;"><a href="AddBook.jsp">Add Book</a></button>
             <button type="button" class="btn btn-primary" style="background-color: white; color: black;"><a href="DeleteBook.jsp">Delete Book</a></button>
+            <button type="button" class="btn btn-primary" style="background-color: white; color: black;"><a href="ChangeBook.jsp">Change Book</a></button>
         </div>
     </center>
-
+<%@ include file="Footer.jsp" %>
 </body>
 </html>

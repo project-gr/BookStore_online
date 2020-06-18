@@ -13,11 +13,15 @@
         <%@ include file="header.jsp" %>
     </head>
     <body>
-        <div class="jumbotron">
-            <h1>Order Confirmation</h1>
-            <p>Congratulations, your order has been placed. The confirmation number for your order is: <strong><%= request.getAttribute("confirmId")%></strong>
+        <div class="row">
+            <div class="side"></div>
+            <div class="main">
+                <div class="jumbotron">
+                    <h1>Order Confirmation</h1>
+                    <p>Congratulations, your order has been placed. The confirmation number for your order is: <strong><%= request.getAttribute("confirmId")%></strong>
+                </div>
+            </div>
         </div>
-
         <%@ include file="Footer.jsp" %>
     </body>
 </html>

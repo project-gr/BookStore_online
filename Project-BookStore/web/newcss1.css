@@ -26,6 +26,10 @@ and open the template in the editor.
     border-radius: 3px;
     cursor: pointer;
     transition: left 0.4s ease;
+    overflow: hidden;
+    position: fixed;
+    z-index: 1;
+    overflow-x: hidden;
 }
 .btn-menu.click{
     left: 260px;
@@ -139,4 +143,25 @@ and open the template in the editor.
 .content p{
     font-size: 30px;
     font-weight: 500;
+}
+#myCarousel {
+    margin-top: 0;
+}
+#myCarousel .item {
+    height: 480px;
+}
+#slide1 {
+    background: url('https://static01.nyt.com/images/2018/12/14/arts/14artbooks2/14artbooks2-superJumbo.jpg') center no-repeat;
+    background-size: cover;
+}
+#slide2 {
+    background: url('https://www.ikea.com/images/a-gallery-style-wall-displaying-artworks-and-books-in-displa-d6b241be97d58dc7400f2f745388fd71.jpg') center no-repeat;
+    background-size: cover;
+}
+#slide3 {
+    background: url('https://www.saa.co.uk/media/catalog/category/watercolour-books_2_1.jpg') center no-repeat;
+    background-size: cover;
+}
+a {
+    color: #000;
 }

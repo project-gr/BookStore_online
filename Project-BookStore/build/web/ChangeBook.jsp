@@ -1,11 +1,12 @@
 <%-- 
-    Document   : AddBook
-    Created on : Jun 14, 2020, 5:04:48 PM
+    Document   : ChangeBook
+    Created on : Jun 19, 2020, 12:41:45 AM
     Author     : ADMIN
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%@ include file="header.jsp" %>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -13,8 +14,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     </head>
     <body>
-        <%@ include file="header.jsp" %>
-        <form action="AddBookServlet" method="post" enctype="multipart/form-data">
+        <form action="ChangeBook" method="post" enctype="multipart/form-data">
             <center>
                 <h1>Add Book</h1>
                 <table>
@@ -36,26 +36,6 @@
                     <tr>
                         <td class ="color_text">Publisher:</td>
                         <td><input class="form-control" type="text" name="publisher" id="publisher" placeholder="Publisher" required></td>
-                    </tr>
-
-                    <tr>
-                        <td class ="color_text">Category ID:</td>
-                        <td><input class="form-control" type="text" name="categoryid" id="categoryid" placeholder="Category ID"></td>
-                    </tr>
-
-                    <tr>
-                        <td class ="color_text">Category: </td>
-                        <td><input class="form-control" type="text" name="category" id="genre" placeholder="Category"></td>
-                    </tr>
-
-                    <tr>
-                        <td class ="color_text">Author ID:</td>
-                        <td><input class="form-control" type="text" name="authorid" id="authorid" placeholder="Author ID"></td>
-                    </tr>
-
-                    <tr>
-                        <td class ="color_text">Author:</td>
-                        <td><input class="form-control" type="text" name="author" id="author" placeholder="Author"></td>
                     </tr>
 
                     <tr>

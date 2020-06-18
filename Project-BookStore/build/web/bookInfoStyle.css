@@ -9,21 +9,21 @@ and open the template in the editor.
 */
 
 .column {
-  float: left;
-  width: 33.33%;
-  padding: 15px;
+    float: left;
+    width: 33.33%;
+    padding: 15px;
 }
 
 /* Clear floats after the columns */
 .row:after {
-  content: "";
-  display: table;
-  clear: both;
+    content: "";
+    display: table;
+    clear: both;
 }
 
 /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
 @media screen and (max-width:600px) {
-  .column {
-    width: 100%;
-  }
+    .column {
+        width: 100%;
+    }
 }
