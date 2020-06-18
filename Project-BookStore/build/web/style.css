@@ -12,7 +12,7 @@ and open the template in the editor.
     flex-wrap: wrap;
 }
 .side{
-    flex: 10%;
+    flex: 20%;
     resize: horizontal;
     overflow: auto;
 }
@@ -21,24 +21,8 @@ and open the template in the editor.
     resize: horizontal;
     overflow: auto;
 }
-#myCarousel {
-    margin-top: 0;
-}
-#myCarousel .item {
-    height: 480px;
-}
-#slide1 {
-    background: url('https://static01.nyt.com/images/2018/12/14/arts/14artbooks2/14artbooks2-superJumbo.jpg') center no-repeat;
-    background-size: cover;
-}
-#slide2 {
-    background: url('https://www.ikea.com/images/a-gallery-style-wall-displaying-artworks-and-books-in-displa-d6b241be97d58dc7400f2f745388fd71.jpg') center no-repeat;
-    background-size: cover;
-}
-#slide3 {
-    background: url('https://www.saa.co.uk/media/catalog/category/watercolour-books_2_1.jpg') center no-repeat;
-    background-size: cover;
-}
-a {
-    color: #000;
+.column{
+    flex: 10%;
+    resize: horizontal;
+    overflow: auto;
 }

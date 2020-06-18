@@ -67,6 +67,6 @@
             </div>
         </div>
     </center>
-
+<%@ include file="Footer.jsp" %>
     </body>
 </html>

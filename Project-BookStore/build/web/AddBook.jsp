@@ -32,7 +32,7 @@
                         <td class ="color_text">Price:</td>
                         <td><input class="form-control" type="text" name="price" id="price" placeholder="Price" required></td>
                     </tr>
-                    
+
                     <tr>
                         <td class ="color_text">Publisher:</td>
                         <td><input class="form-control" type="text" name="publisher" id="publisher" placeholder="Publisher" required></td>
@@ -42,17 +42,17 @@
                         <td class ="color_text">Category ID:</td>
                         <td><input class="form-control" type="text" name="categoryid" id="categoryid" placeholder="Category ID"></td>
                     </tr>
-                    
+
                     <tr>
                         <td class ="color_text">Category: </td>
                         <td><input class="form-control" type="text" name="category" id="genre" placeholder="Category"></td>
                     </tr>
-                    
+
                     <tr>
                         <td class ="color_text">Author ID:</td>
                         <td><input class="form-control" type="text" name="authorid" id="authorid" placeholder="Author ID"></td>
                     </tr>
-                    
+
                     <tr>
                         <td class ="color_text">Author:</td>
                         <td><input class="form-control" type="text" name="author" id="author" placeholder="Author"></td>
@@ -79,5 +79,6 @@
                 </div>
             </center>
         </form>
+        <%@ include file="Footer.jsp" %>
     </body>
 </html>
