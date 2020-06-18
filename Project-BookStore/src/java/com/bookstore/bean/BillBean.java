@@ -17,15 +17,17 @@ public class BillBean {
     private String username;
     private Date orderDate;
     private float totalPrice;
+    private int isProcessed;
 
     public BillBean() {
     }
 
-    public BillBean(int orderID, String username, Date orderDate, float totalPrice) {
+    public BillBean(int orderID, String username, Date orderDate, float totalPrice, int isProcessed) {
         this.orderID = orderID;
         this.username = username;
         this.orderDate = orderDate;
         this.totalPrice = totalPrice;
+        this.isProcessed = isProcessed;
     }
 
     public int getOrderID() {
@@ -59,5 +61,15 @@ public class BillBean {
     public void setTotalPrice(float totalPrice) {
         this.totalPrice = totalPrice;
     }
+
+    public int getIsProcessed() {
+        return isProcessed;
+    }
+
+    public void setIsProcessed(int isProcessed) {
+        this.isProcessed = isProcessed;
+    }
+    
+    
     
 }

@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -24,7 +25,27 @@ public class CategoryDAO implements DAO<CategoryBean>{
 
     @Override
     public List<CategoryBean> getList() throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<CategoryBean> categoryList = null;
+        CategoryBean categoryBean = null;
+
+        try {
+            categoryList = new ArrayList<CategoryBean>();
+            String query = "select category_name from category";
+
+            conn = DBcontext.getConnection();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                categoryBean = new CategoryBean();
+                categoryBean.setCategoryName(rs.getString(1));
+
+                categoryList.add(categoryBean);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return categoryList;
     }
 
     @Override

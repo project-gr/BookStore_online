@@ -277,7 +277,7 @@ public class BookDAO implements DAO<BookBean> {
         boolean b = false;
 
         try {
-            String query = "delete from Books where isbn = ?";
+            String query = "delete from books where isbn = ?";
             conn = DBcontext.getConnection();
             ps = conn.prepareStatement(query);
 

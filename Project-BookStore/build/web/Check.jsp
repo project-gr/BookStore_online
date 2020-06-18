@@ -7,7 +7,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="com.bookstore.dao.BookDAO, java.text.*" %>
-<%@ include file="header.jsp" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -62,7 +61,7 @@
                 </tbody>
             </table>
         </form>
-        <form action="SubmitOrder" method="post">
+        <form action="Buy" method="post">
             <input type="submit" class="btn btn-default" value="Buy">
         </form>	
     </c:if>

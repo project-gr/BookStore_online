@@ -10,12 +10,8 @@ import com.bookstore.dao.UserDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -61,19 +57,19 @@ public class LoginControl extends HttpServlet {
 
             if (userBean == null) {
                 request.getRequestDispatcher("Login.jsp").include(request, response);
-                out.println("<div><h1><b><i> Sorry username or password error!</h1></div>");
 
             } else if (userBean.getIs_staff() == 0) {
 //                session.setAttribute("userBean", userBean);
 
-                request.setAttribute("username", username);
+                request.setAttribute("userBean", userBean);
                 request.getRequestDispatcher("CustomerAccount.jsp").forward(request, response);
             } else {
 //                session.setAttribute("userBean", userBean);
 
-                request.setAttribute("username", username);
+                request.setAttribute("userBean", userBean);
                 request.getRequestDispatcher("StaffAccount.jsp").forward(request, response);
             }
+//            request.getRequestDispatcher("header.jsp").forward(request, response);
 
         } catch (Exception e) {
         }

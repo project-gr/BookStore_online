@@ -82,7 +82,7 @@ public final class Login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            <div class=\"container-fluid\">\n");
       out.write("                <div class=\"navbar-header\">\n");
       out.write("                    <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#navbar\" aria-expanded=\"false\" aria-controls=\"navbar\"></button>\n");
-      out.write("                    <a class=\"navbar-brand\" href=\"Home.jsp\">Hehe Book Store</a>\n");
+      out.write("                    <a class=\"navbar-brand\" href=\"Home.jsp\">Hê</a>\n");
       out.write("                </div>\n");
       out.write("\n");
       out.write("                <div id=\"navbar\" class=\"navbar-collapse collapse\">\n");
@@ -165,6 +165,15 @@ public final class Login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <link rel=\"stylesheet\" href=\"https://use.fontawesome.com/releases/v5.8.1/css/all.css\">\n");
       out.write("        <link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css?family=Lato&display=swap\">\n");
       out.write("        <script src=\"checkSignUp.js\"></script>\n");
+      out.write("        \n");
+      out.write("        <style>\n");
+      out.write("            h2{\n");
+      out.write("                color: #505f75;\n");
+      out.write("            }\n");
+      out.write("            input{\n");
+      out.write("                color: #505f75;\n");
+      out.write("            }\n");
+      out.write("        </style>\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
       out.write("        <div class=\"main\">\n");

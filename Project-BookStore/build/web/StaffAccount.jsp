@@ -30,45 +30,55 @@
                 email = userBean.getEmail();
         %>
 
-        <a href="Login.jsp"></a>
     <center> 
         <form method="post" action="InfoControl">
-            <ol type="circle">
-                <input type="hidden" name="username" value="<%=username%>">
-
-                <table>
-                    <tr>
-                        <td>Full name </td>
-                        <td><input class="form-control" type="text" name="fName" value="<%=fName%>" required> </td>
-                    </tr>
-
-                    <tr>
-                        <td>Address </td>
-                        <td><input class="form-control" type="text" name="address" value="<%=address%>" required> </td>
-                    </tr>
-
-                    <tr>
-                        <td>Phone </td>
-                        <td><input class="form-control" type="text" name="phone"vvalue="<%=phone%>" required> </td>
-                    </tr>
-
-                    <tr>
-                        <td>Email </td>
-                        <td><input class="form-control" type="text" name="Email"value="<%=email%>" required> </td>
-                    </tr>
-
-                    <tr>
-                        <td><input class="form-control" type="submit" value="Update"> </td>
-                        <td> <input class="form-control" type="reset" name="Reset"> </td>
-                    </tr>
-
-                </table>
-
-            </ol>
+            <input type="hidden" name="username" value="<%=username%>">
+            <div class="main">
+                <div class="profile-card">
+                    <div class="image-container">
+                        <img src="https://xansan.com/wp-content/uploads/2018/10/user-avatar-default-2609.png">
+                        <div class="title">
+                            <h2><%=fName%></h2>
+                        </div>
+                    </div>
+                    <div class="main-container">
+                        <table>
+                            <tr>
+                                <td><i class="fa fa-home info"></i></td>
+                                <td>Address</td>
+                                <td><input type="text" name="address" value="<%=address%>" required></td>
+                            </tr>
+                            <tr>
+                                <td><i class="fa fa-envelope info"></i></td>
+                                <td>Email</td>
+                                <td><input type="text" name="Email"value="<%=email%>" required></td>
+                            </tr>
+                            <tr>
+                                <td><i class="fa fa-phone info"></i></td>
+                                <td>Phone</td>
+                                <td><input type="text" name="phone"vvalue="<%=phone%>" required></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <br>
+                    <div class="btn-group">
+                        <button type="submit" class="btn btn-primary" style="background-color: white; color: black;">Save</button>
+                        <button type="reset" class="btn btn-primary" style="background-color: white; color: black;">Reset</button>
+                    </div>
+                </div>
+            </div>
         </form>
     </center>
     <%
         }
     %>
+    <br>
+    <center>
+        <div class="btn-group btn-group-lg">
+            <button type="button" class="btn btn-primary" style="background-color: white; color: black;"><a href="AddBook.jsp">Add Book</a></button>
+            <button type="button" class="btn btn-primary" style="background-color: white; color: black;"><a href="DeleteBook.jsp">Delete Book</a></button>
+        </div>
+    </center>
+
 </body>
 </html>

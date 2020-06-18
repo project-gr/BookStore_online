@@ -6,6 +6,9 @@ import javax.servlet.jsp.*;
 import com.bookstore.dao.UserDAO;
 import com.bookstore.bean.UserBean;
 import com.bookstore.bean.UserBean;
+import com.bookstore.dao.UserDAO;
+import com.bookstore.bean.BookBean;
+import com.bookstore.bean.UserBean;
 import java.sql.DriverManager;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -23,20 +26,10 @@ public final class StaffAccount_jsp extends org.apache.jasper.runtime.HttpJspBas
     _jspx_dependants.add("/header.jsp");
   }
 
-  private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_c_forEach_var_items;
-
   private org.glassfish.jsp.api.ResourceInjector _jspx_resourceInjector;
 
   public java.util.List<String> getDependants() {
     return _jspx_dependants;
-  }
-
-  public void _jspInit() {
-    _jspx_tagPool_c_forEach_var_items = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
-  }
-
-  public void _jspDestroy() {
-    _jspx_tagPool_c_forEach_var_items.release();
   }
 
   public void _jspService(HttpServletRequest request, HttpServletResponse response)
@@ -93,88 +86,223 @@ public final class StaffAccount_jsp extends org.apache.jasper.runtime.HttpJspBas
       out.write("\n");
       out.write("\n");
       out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
       out.write("<!DOCTYPE html>\n");
       out.write("<html>\n");
       out.write("    <head>\n");
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
       out.write("        <title>Book Store</title>\n");
-      out.write("        <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css\">\n");
+      out.write("        <link rel=\"stylesheet\" href=\"newcss1.css\">\n");
+      out.write("        <script src=\"https://code.jquery.com/jquery-3.4.1.js\"></script>\n");
+      out.write("        <script src=\"https://kit.fontawesome.com/a076d05399.js\"></script>\n");
+      out.write("\n");
+      out.write("        <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js\"></script>\n");
+      out.write("        <script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js\"></script>\n");
+      out.write("\n");
+      out.write("        <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\">\n");
+      out.write("        <script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js\"></script>\n");
+      out.write("\n");
+      out.write("        <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css\">\n");
+      out.write(" \n");
+      out.write("        <style>\n");
+      out.write("            .navbar-inner {\n");
+      out.write("                min-height: 0px;\n");
+      out.write("            }\n");
+      out.write("\n");
+      out.write("            .navbar-brand,\n");
+      out.write("            .navbar-nav li a {\n");
+      out.write("                line-height: 70px;\n");
+      out.write("                height: 70px;\n");
+      out.write("                padding-top: 0;\n");
+      out.write("            }\n");
+      out.write("        </style>\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
-      out.write("        <nav class=\"navbar navbar-inverse navbar-fixed-top\">\n");
-      out.write("            <div class=\"container-fluid\">\n");
-      out.write("                <div class=\"navbar-header\">\n");
-      out.write("                    <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#navbar\" aria-expanded=\"false\" aria-controls=\"navbar\"></button>\n");
-      out.write("                    <a class=\"navbar-brand\" href=\"Home.jsp\">Hehe Book Store</a>\n");
+      out.write("        <header>\n");
+      out.write("            <nav class=\"navbar navbar-inverse navbar-static-top\">\n");
+      out.write("                <div class=\"container-fluid\">\n");
+      out.write("                    <!-- Brand and toggle get grouped for better mobile display -->\n");
+      out.write("                    <div class=\"navbar-header\">\n");
+      out.write("                        <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#bs-example-navbar-collapse-1\" aria-expanded=\"false\">\n");
+      out.write("                            <span class=\"sr-only\"></span>\n");
+      out.write("                            <span class=\"icon-bar\"></span>\n");
+      out.write("                            <span class=\"icon-bar\"></span>\n");
+      out.write("                            <span class=\"icon-bar\"></span>\n");
+      out.write("                        </button>\n");
+      out.write("                        <a class=\"navbar-brand\" href=\"Home.jsp\"><img src=\"logo3.png\" alt=\"\" class=\"logo\" style=\"width: 70px; height: 70px;\"></a>\n");
+      out.write("                    </div>\n");
+      out.write("\n");
+      out.write("                    <div class=\"collapse navbar-collapse\" id=\"bs-example-navbar-collapse-1\">\n");
+      out.write("                        <form class=\"navbar-form navbar-left\" method=\"post\" action=\"SearchControl\">\n");
+      out.write("                            <div class=\"form-group\">\n");
+      out.write("                                <input name=\"search\" id=\"search\" type=\"text\" class=\"form-control\" placeholder=\"Search\">\n");
+      out.write("\n");
+      out.write("                                <select class=\"form-control\" name=\"type\">\n");
+      out.write("                                    <option value=\"Book\"> Book </option>\n");
+      out.write("                                    <option value=\"Author\"> Author </option>\n");
+      out.write("                                    <option value=\"Category\"> Category </option>\n");
+      out.write("                                </select>\n");
+      out.write("                            </div>\n");
+      out.write("                        </form>\n");
+      out.write("\n");
+      out.write("                        <ul class=\"nav navbar-nav navbar-right\">\n");
+      out.write("                            <li class=\"dropdown\">\n");
+      out.write("                                <a href=\"\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">Account<span class=\"caret\"></span></a>\n");
+      out.write("                                <ul class=\"dropdown-menu\">\n");
+      out.write("\n");
+      out.write("                                    <li><a href=\"Login.jsp\">Sign In</a></li>\n");
+      out.write("                                    <li><a href=\"CustomerAccount.jsp\">Information</a></li>\n");
+      out.write("                                    <li role=\"separator\" class=\"divider\"></li>\n");
+      out.write("                                    <li><a href=\"Logout.jsp\">Sign Out</a></li>\n");
+      out.write("                                </ul>\n");
+      out.write("                            </li>\n");
+      out.write("                            <li><a href=\"#\">Abut us</a></li>\n");
+      out.write("                            <li><a href=\"Check.jsp\">Cart</a></li>\n");
+      out.write("                        </ul>\n");
+      out.write("                    </div>\n");
       out.write("                </div>\n");
-      out.write("\n");
-      out.write("                <div>\n");
-      out.write("                    <form class=\"navbar-form navbar-left\" action=\"./Search\" method=\"get\">\n");
-      out.write("                        <input type=\"text\" class=\"form-control\" name=\"search-query\" id=\"search-query\" size=\"40\" placeholder=\"ISBN, Title, Author, Keyword...\">\n");
-      out.write("                    </form>\n");
-      out.write("\n");
-      out.write("                    <ul class=\"nav navbar-nav navbar-right\">\n");
-      out.write("                        <li class=\"dropdown\">\n");
-      out.write("                            <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-expanded=\"false\">Browse<span class=\"caret\"></span></a>\n");
-      out.write("                            <ul class=\"dropdown-menu\" role=\"menu\">\n");
-      out.write("                                <li><a href=\"./Search?search-query=\">All</a></li>\n");
-      out.write("                                    ");
-      if (_jspx_meth_c_forEach_0(_jspx_page_context))
-        return;
-      out.write("\n");
-      out.write("                            </ul>\n");
-      out.write("                        </li>\n");
-      out.write("                        \n");
-      out.write("                        <li><a href=\"Login.jsp\">Sign in/Register</a></li> \n");
-      out.write("                        \n");
-      out.write("                        <li class=\"dropdown\">\n");
-      out.write("                            <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-expanded=\"false\">Admin<span class=\"caret\"></span></a>\n");
-      out.write("                            <ul class=\"dropdown-menu\" role=\"menu\">\n");
-      out.write("                                <li><a href=\"./generateReports\">View Reports</a></li>\n");
-      out.write("                                <li><a href=\"./AddBook.jsp\">Add Book</a></li>\n");
-      out.write("                                <li><a href=\"./UserLookup\">View Users</a></li>\n");
-      out.write("                            </ul>\n");
-      out.write("                        </li>\n");
-      out.write("                        \n");
-      out.write("                        <li><a href=\"./Checkout.jsp\">Cart</a></li>\n");
-      out.write("                    </ul>\n");
-      out.write("                </div>\n");
+      out.write("            </nav>\n");
+      out.write("        </header>\n");
+      out.write("        <div>\n");
+      out.write("            <div class=\"btn-menu\">\n");
+      out.write("                <span class=\"fas fa-bars\"></span>\n");
       out.write("            </div>\n");
-      out.write("        </nav>\n");
-      out.write("        <div style=\"padding: 70px 15px; text-align: center;\">\n");
-      out.write("            <div class=\"container\">\n");
-      out.write("            </div>\n");
+      out.write("            <nav class=\"sidebar\">\n");
+      out.write("                <div class=\"text\">\n");
+      out.write("                    Side Menu</div>\n");
+      out.write("                <ul>\n");
+      out.write("                    <li class=\"active\"><a href=\"#\">Dashboard</a></li>\n");
+      out.write("                    <li>\n");
+      out.write("                        <a href=\"#\" class=\"feat-btn\">Features\n");
+      out.write("                            <span class=\"fas fa-caret-down first\"></span>\n");
+      out.write("                        </a>\n");
+      out.write("                        <ul class=\"feat-show\">\n");
+      out.write("                            <li><a href=\"#\">Pages</a></li>\n");
+      out.write("                            <li><a href=\"#\">Elements</a></li>\n");
+      out.write("                        </ul>\n");
+      out.write("                    </li>\n");
+      out.write("                    <li>\n");
+      out.write("                        <a href=\"#\" class=\"serv-btn\">Services\n");
+      out.write("                            <span class=\"fas fa-caret-down second\"></span>\n");
+      out.write("                        </a>\n");
+      out.write("                        <ul class=\"serv-show\">\n");
+      out.write("                            <li><a href=\"#\">App Design</a></li>\n");
+      out.write("                            <li><a href=\"#\">Web Design</a></li>\n");
+      out.write("                        </ul>\n");
+      out.write("                    </li>\n");
+      out.write("                    <li><a href=\"#\">Portfolio</a></li>\n");
+      out.write("                    <li><a href=\"#\">Overview</a></li>\n");
+      out.write("                    <li><a href=\"#\">Shortcuts</a></li>\n");
+      out.write("                    <li><a href=\"#\">Feedback</a></li>\n");
+      out.write("                </ul>\n");
+      out.write("            </nav>\n");
+      out.write("            <script>\n");
+      out.write("                $('.btn').click(function () {\n");
+      out.write("                    $(this).toggleClass(\"click\");\n");
+      out.write("                    $('.sidebar').toggleClass(\"show\");\n");
+      out.write("                });\n");
+      out.write("                $('.feat-btn').click(function () {\n");
+      out.write("                    $('nav ul .feat-show').toggleClass(\"show\");\n");
+      out.write("                    $('nav ul .first').toggleClass(\"rotate\");\n");
+      out.write("                });\n");
+      out.write("                $('.serv-btn').click(function () {\n");
+      out.write("                    $('nav ul .serv-show').toggleClass(\"show1\");\n");
+      out.write("                    $('nav ul .second').toggleClass(\"rotate\");\n");
+      out.write("                });\n");
+      out.write("                $('nav ul li').click(function () {\n");
+      out.write("                    $(this).addClass(\"active\").siblings().removeClass(\"active\");\n");
+      out.write("                });\n");
+      out.write("            </script>\n");
       out.write("        </div>\n");
       out.write("    </body>\n");
       out.write("</html>\n");
       out.write("\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
-      out.write("        <table>\n");
-      out.write("            <tr>\n");
-      out.write("                <th> User Name </th>\n");
-      out.write("                <th> Pass </th>\n");
-      out.write("                <th> Full Name </th>\n");
-      out.write("                <th> Address </th>\n");
-      out.write("                <th> Phone </th>\n");
-      out.write("                <th> Email </th>\n");
-      out.write("                <th> Sign up date </th>\n");
-      out.write("                <th> &nbsp; </th>\n");
-      out.write("            </tr>\n");
-      out.write("            ");
- String username = (String) request.getAttribute("username");
+      out.write("        ");
+            String username = (String) request.getAttribute("username");
+            UserDAO userDAO = new UserDAO();
+            UserBean userBean = (UserBean) session.getAttribute("userBean");
+            String fName = "", address = "", phone = "", email = "";
+            if (userBean == null) {
+                response.sendRedirect("Login.jsp");
+            } else {
+                fName = userBean.getfName();
+                address = userBean.getAddress();
+                phone = userBean.getPhone();
+                email = userBean.getEmail();
+        
       out.write("\n");
-      out.write("            ");
-      if (_jspx_meth_c_forEach_1(_jspx_page_context))
-        return;
       out.write("\n");
-      out.write("        </table>\n");
-      out.write("        <div class=\"right\">\n");
-      out.write("            <form action=\"Logout.jsp\">\n");
-      out.write("                <input type=\"submit\" value=\"Logout\">\n");
-      out.write("            </form>\n");
-      out.write("        </div>\n");
-      out.write("    </body>\n");
+      out.write("    <center> \n");
+      out.write("        <form method=\"post\" action=\"InfoControl\">\n");
+      out.write("            <input type=\"hidden\" name=\"username\" value=\"");
+      out.print(username);
+      out.write("\">\n");
+      out.write("            <div class=\"main\">\n");
+      out.write("                <div class=\"profile-card\">\n");
+      out.write("                    <div class=\"image-container\">\n");
+      out.write("                        <img src=\"https://xansan.com/wp-content/uploads/2018/10/user-avatar-default-2609.png\">\n");
+      out.write("                        <div class=\"title\">\n");
+      out.write("                            <h2>");
+      out.print(fName);
+      out.write("</h2>\n");
+      out.write("                        </div>\n");
+      out.write("                    </div>\n");
+      out.write("                    <div class=\"main-container\">\n");
+      out.write("                        <table>\n");
+      out.write("                            <tr>\n");
+      out.write("                                <td><i class=\"fa fa-home info\"></i></td>\n");
+      out.write("                                <td>Address</td>\n");
+      out.write("                                <td><input type=\"text\" name=\"address\" value=\"");
+      out.print(address);
+      out.write("\" required></td>\n");
+      out.write("                            </tr>\n");
+      out.write("                            <tr>\n");
+      out.write("                                <td><i class=\"fa fa-envelope info\"></i></td>\n");
+      out.write("                                <td>Email</td>\n");
+      out.write("                                <td><input type=\"text\" name=\"Email\"value=\"");
+      out.print(email);
+      out.write("\" required></td>\n");
+      out.write("                            </tr>\n");
+      out.write("                            <tr>\n");
+      out.write("                                <td><i class=\"fa fa-phone info\"></i></td>\n");
+      out.write("                                <td>Phone</td>\n");
+      out.write("                                <td><input type=\"text\" name=\"phone\"vvalue=\"");
+      out.print(phone);
+      out.write("\" required></td>\n");
+      out.write("                            </tr>\n");
+      out.write("                        </table>\n");
+      out.write("                    </div>\n");
+      out.write("                    <table>\n");
+      out.write("                        <tr>\n");
+      out.write("                        <br>\n");
+      out.write("                        <td><input name=\"Save\" id=\"Save\" type=\"text\" class=\"form-control\" placeholder=\"Save\"></td>\n");
+      out.write("                        <td><input name=\"Reset\" id=\"Reset\" type=\"text\" class=\"form-control\" placeholder=\"Reset\"></td>\n");
+      out.write("                        </tr>\n");
+      out.write("                    </table>\n");
+      out.write("                </div>\n");
+      out.write("            </div>\n");
+      out.write("        </form>\n");
+      out.write("    </center>\n");
+      out.write("    ");
+
+        }
+    
+      out.write("\n");
+      out.write("\n");
+      out.write("    <table>\n");
+      out.write("        <tr>\n");
+      out.write("        <br>\n");
+      out.write("        <td><a href=\"AddBook.jsp\"><input name=\"Add Book\" type=\"text\" class=\"form-control\" placeholder=\"Add Book\"></a></td>\n");
+      out.write("        <td><input name=\"Reset\" id=\"Reset\" type=\"text\" class=\"form-control\" placeholder=\"Reset\"></td>\n");
+      out.write("    </tr>\n");
+      out.write("</table>\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("</body>\n");
       out.write("</html>\n");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
@@ -187,107 +315,5 @@ public final class StaffAccount_jsp extends org.apache.jasper.runtime.HttpJspBas
     } finally {
       _jspxFactory.releasePageContext(_jspx_page_context);
     }
-  }
-
-  private boolean _jspx_meth_c_forEach_0(PageContext _jspx_page_context)
-          throws Throwable {
-    PageContext pageContext = _jspx_page_context;
-    JspWriter out = _jspx_page_context.getOut();
-    //  c:forEach
-    org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_forEach_0 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _jspx_tagPool_c_forEach_var_items.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
-    _jspx_th_c_forEach_0.setPageContext(_jspx_page_context);
-    _jspx_th_c_forEach_0.setParent(null);
-    _jspx_th_c_forEach_0.setVar("row");
-    _jspx_th_c_forEach_0.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${result.rows}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
-    int[] _jspx_push_body_count_c_forEach_0 = new int[] { 0 };
-    try {
-      int _jspx_eval_c_forEach_0 = _jspx_th_c_forEach_0.doStartTag();
-      if (_jspx_eval_c_forEach_0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
-        do {
-          out.write("\n");
-          out.write("                                    <li><a href=\"./Search?search-query=");
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${row.category_name}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-          out.write('"');
-          out.write('>');
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${row.category_name}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-          out.write("</a></li>\n");
-          out.write("                                    ");
-          int evalDoAfterBody = _jspx_th_c_forEach_0.doAfterBody();
-          if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
-            break;
-        } while (true);
-      }
-      if (_jspx_th_c_forEach_0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-        return true;
-      }
-    } catch (Throwable _jspx_exception) {
-      while (_jspx_push_body_count_c_forEach_0[0]-- > 0)
-        out = _jspx_page_context.popBody();
-      _jspx_th_c_forEach_0.doCatch(_jspx_exception);
-    } finally {
-      _jspx_th_c_forEach_0.doFinally();
-      _jspx_tagPool_c_forEach_var_items.reuse(_jspx_th_c_forEach_0);
-    }
-    return false;
-  }
-
-  private boolean _jspx_meth_c_forEach_1(PageContext _jspx_page_context)
-          throws Throwable {
-    PageContext pageContext = _jspx_page_context;
-    JspWriter out = _jspx_page_context.getOut();
-    //  c:forEach
-    org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_forEach_1 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _jspx_tagPool_c_forEach_var_items.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
-    _jspx_th_c_forEach_1.setPageContext(_jspx_page_context);
-    _jspx_th_c_forEach_1.setParent(null);
-    _jspx_th_c_forEach_1.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${userList.getElement(username)}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
-    _jspx_th_c_forEach_1.setVar("user");
-    int[] _jspx_push_body_count_c_forEach_1 = new int[] { 0 };
-    try {
-      int _jspx_eval_c_forEach_1 = _jspx_th_c_forEach_1.doStartTag();
-      if (_jspx_eval_c_forEach_1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
-        do {
-          out.write("\n");
-          out.write("                <tr>\n");
-          out.write("                    <th> ");
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${user.getUsername()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-          out.write(" </th>\n");
-          out.write("                    <th> ");
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${user.getPass()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-          out.write(" </th>\n");
-          out.write("                    <th> ");
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${user.getfName()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-          out.write(" </th>\n");
-          out.write("                    <th> ");
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${user.getAddress()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-          out.write(" </th>\n");
-          out.write("                    <th> ");
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${user.getPhone()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-          out.write(" </th>\n");
-          out.write("                    <th> ");
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${user.getEmail()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-          out.write(" </th>\n");
-          out.write("                    <th> ");
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${user.getSignup_date()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-          out.write(" </th>\n");
-          out.write("                    <th> &nbsp; </th>\n");
-          out.write("                </tr>\n");
-          out.write("            ");
-          int evalDoAfterBody = _jspx_th_c_forEach_1.doAfterBody();
-          if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
-            break;
-        } while (true);
-      }
-      if (_jspx_th_c_forEach_1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-        return true;
-      }
-    } catch (Throwable _jspx_exception) {
-      while (_jspx_push_body_count_c_forEach_1[0]-- > 0)
-        out = _jspx_page_context.popBody();
-      _jspx_th_c_forEach_1.doCatch(_jspx_exception);
-    } finally {
-      _jspx_th_c_forEach_1.doFinally();
-      _jspx_tagPool_c_forEach_var_items.reuse(_jspx_th_c_forEach_1);
-    }
-    return false;
   }
 }
