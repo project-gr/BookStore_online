@@ -22,6 +22,18 @@ public class OrderBean {
 
     private BookBean book;
     private BookBean price;
+    
+    public OrderBean() {
+        super();
+    }
+
+    public OrderBean(int orderID, String isbn, int quantity) {
+        this.orderID = orderID;
+        this.isbn = isbn;
+        this.quantity = quantity;
+    }
+
+    
 
     public BookBean getBook() {
         return book;
@@ -33,16 +45,6 @@ public class OrderBean {
 
     public void setPrice(BookBean price) {
         this.price = price;
-    }
-
-    public OrderBean() {
-        super();
-    }
-
-    public OrderBean(int orderID, String isbn, int quantity) {
-        this.orderID = orderID;
-        this.isbn = isbn;
-        this.quantity = quantity;
     }
 
     public int getOrderID() {
