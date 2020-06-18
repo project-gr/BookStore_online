@@ -26,6 +26,11 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 
         <link rel="stylesheet" href="style.css">
+        <style>
+            body{
+                background-color: black;
+            }
+        </style>
     </head>
     <body>
 
@@ -59,14 +64,15 @@
                             </div>
                         </div>
                     </div>
- 
+
                     <%
                         }
                     %>
                 </div>
             </div>
+            <div class="column"></div>
         </div>
     </center>
-<%@ include file="Footer.jsp" %>
-    </body>
+    <%@ include file="Footer.jsp" %>
+</body>
 </html>

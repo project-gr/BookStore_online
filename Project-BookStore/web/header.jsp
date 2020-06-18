@@ -94,29 +94,21 @@
                 <div class="text">
                     Side Menu</div>
                 <ul>
-                    <li class="active"><a href="#">Dashboard</a></li>
+                    <li class="active"><a href="AllBook.jsp">All Book</a></li>
                     <li>
-                        <a href="#" class="feat-btn">Features
+                        <a href="#" class="feat-btn">Category
                             <span class="fas fa-caret-down first"></span>
                         </a>
-                        <ul class="feat-show">
-                            <li><a href="#">Pages</a></li>
-                            <li><a href="#">Elements</a></li>
+                        <jsp:useBean id="categoryList" class="com.bookstore.dao.CategoryDAO" scope="request"></jsp:useBean>
+                            <ul class="feat-show">
+
+
+                            <c:forEach items="${categoryList.getList()}" var="category">
+
+                                <li><a href="SearchCategory?categoryName=${category.getCategoryName()}">${category.getCategoryName()}</a></li>
+                                </c:forEach>
                         </ul>
                     </li>
-                    <li>
-                        <a href="#" class="serv-btn">Services
-                            <span class="fas fa-caret-down second"></span>
-                        </a>
-                        <ul class="serv-show">
-                            <li><a href="#">App Design</a></li>
-                            <li><a href="#">Web Design</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">Portfolio</a></li>
-                    <li><a href="#">Overview</a></li>
-                    <li><a href="#">Shortcuts</a></li>
-                    <li><a href="#">Feedback</a></li>
                 </ul>
             </nav>
             <script>
