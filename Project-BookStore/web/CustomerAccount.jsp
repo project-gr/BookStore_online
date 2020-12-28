@@ -18,7 +18,6 @@
         <%@ include file="header.jsp" %>
         <link rel="stylesheet" href="customer_account.css">
         <link rel="stylesheet" type="text/css" href="newcss3.css">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
 </head>
 <body>

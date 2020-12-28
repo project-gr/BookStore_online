@@ -13,7 +13,6 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
         <link rel="stylesheet" href="style.css">
     </head>
 </head>
@@ -66,14 +65,15 @@
                     </table>
                 </form>
                 <form action="Buy" method="post">
-                    <button type="submit" class="btn btn-primary" style="background-color: white; color: black;">Buy</button>
+                    <button type="submit" class="btn btn-primary" style="background-color: #000; color: #FFF;">Buy</button>
                 </form>	
             </c:if>
             <c:if test="${empty cart.items}">
                 <h2>Cart is empty</h2>
             </c:if>
+            <br>
             <form action="Home.jsp" method="post">
-                <button type="submit" class="btn btn-primary" style="background-color: white; color: black;">Continue Shopping</button>
+                <button type="submit" class="btn btn-primary" style="background-color: #000; color: #FFF;">Continue Shopping</button>
             </form>
         </div>
         <div class="column"></div>

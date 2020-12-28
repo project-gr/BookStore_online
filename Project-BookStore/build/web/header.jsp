@@ -70,7 +70,7 @@
                                 </select>
                             </div>
                         </form>
-                        <ul class="nav navbar-nav navbar-right">
+                            <ul class="nav navbar-nav navbar-right">
                             <li class="dropdown">
                                 <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Account<span class="caret"></span></a>
                                 <ul class="dropdown-menu">
@@ -129,6 +129,13 @@
                 });
             </script>
         </header>
-
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('.carousel').carousel({
+                    interval: 500
+                })
+            });
+            var dropdownOpen = document.
+        </script>
     </body>
 </html>

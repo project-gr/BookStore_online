@@ -15,6 +15,7 @@
         <link rel="stylesheet" type="text/css" href="newcss.css">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato&display=swap">
+
         <script src="checkSignUp.js"></script>
 
         <style>

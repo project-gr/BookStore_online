@@ -5,9 +5,7 @@
  */
 package com.bookstore.control;
 
-import com.bookstore.bean.AuthorBean;
 import com.bookstore.bean.BookBean;
-import com.bookstore.bean.CategoryBean;
 import com.bookstore.context.DBcontext;
 import com.bookstore.dao.BookDAO;
 import java.io.File;

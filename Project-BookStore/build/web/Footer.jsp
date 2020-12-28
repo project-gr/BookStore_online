@@ -31,13 +31,13 @@
                         <a href="#"><i class="fab fa-youtube"></i></a>
                         <a href="#"><i class="fab fa-linkedin-in"></i></a>
                     </div>
-                    <p class="rights-text">© 2020 Created By Lulu & Crows All Rights Reserved.</p>
+                    <p class="rights-text" style="color: #000">© 2020 Created By Lulu & Crows All Rights Reserved.</p>
                 </div>
 
                 <div class="right-col">
                     <h1 style="color: black">Our Newsletter</h1>
                     <div class="border"></div>
-                    <p>Enter your email to get our sales and events.</p>
+                    <p style="color: #000">Enter your email to get our sales and events.</p>
                     <form action="" class="newsletter-form">
                         <input type="text" class="txtb" placeholder="Your email...">
                         <input type="submit" class="btn" value="Send">

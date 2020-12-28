@@ -2,23 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/ADMIN/Desktop/BookStore_online/Project-BookStore/src/java/com/bookstore/bean/UserBean.java</file>
-            <file>file:/C:/Users/ADMIN/Desktop/BookStore_online/Project-BookStore/src/java/com/bookstore/control/ChangeBook.java</file>
-            <file>file:/C:/Users/ADMIN/Desktop/BookStore_online/Project-BookStore/web/newcss2.css</file>
-            <file>file:/C:/Users/ADMIN/Desktop/BookStore_online/Project-BookStore/src/java/com/bookstore/control/AddBookServlet.java</file>
-            <file>file:/C:/Users/ADMIN/Desktop/BookStore_online/Project-BookStore/web/Home.jsp</file>
-            <file>file:/C:/Users/ADMIN/Desktop/BookStore_online/Project-BookStore/web/CustomerAccount.jsp</file>
-            <file>file:/C:/Users/ADMIN/Desktop/BookStore_online/Project-BookStore/web/bookInfoStyle.css</file>
-            <file>file:/C:/Users/ADMIN/Desktop/BookStore_online/Project-BookStore/web/ChangeBook.jsp</file>
-            <file>file:/C:/Users/ADMIN/Desktop/BookStore_online/Project-BookStore/web/style.css</file>
-            <file>file:/C:/Users/ADMIN/Desktop/BookStore_online/Project-BookStore/src/java/com/bookstore/control/SignUpServlet.java</file>
-            <file>file:/C:/Users/ADMIN/Desktop/BookStore_online/Project-BookStore/web/forgotPassword.jsp</file>
-            <file>file:/C:/Users/ADMIN/Desktop/BookStore_online/Project-BookStore/web/Login.jsp</file>
-            <file>file:/C:/Users/ADMIN/Desktop/BookStore_online/Project-BookStore/web/AllBook.jsp</file>
-            <file>file:/C:/Users/ADMIN/Desktop/BookStore_online/Project-BookStore/web/BookInformation.jsp</file>
-            <file>file:/C:/Users/ADMIN/Desktop/BookStore_online/Project-BookStore/web/header.jsp</file>
-            <file>file:/C:/Users/ADMIN/Desktop/BookStore_online/Project-BookStore/src/java/com/bookstore/dao/UserDAO.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

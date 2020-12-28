@@ -57,7 +57,7 @@ public class SignUpServlet extends HttpServlet {
      * Handles the HTTP <code>GET</code> method.
      *
      * @param request servlet request
-     * @param response servlet response
+     * @param response servlet responsel
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */

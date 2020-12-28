@@ -14,7 +14,6 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
         <link rel="stylesheet" href="bookInfoStyle.css">
         <style>
             body{
@@ -40,7 +39,7 @@
                         <div class="column">
                             <form action="AddtoCart" method="post">
                                 <h1><b><%out.println(bookBean.getTitle());%></b></h1>
-                                <img src="images/<%out.println(bookBean.getCoverImage());%>" style="max-width: 300px; max-height: 300px">
+                                <img src="images/<%out.println(bookBean.getCoverImage());%>"  style="max-height: 350px; max-width: 300px;">
 
 
                                 <input type="hidden" name="isbn" value="${book.isbn}" />
@@ -95,7 +94,7 @@
                             <h1><b>Recommend for you</b></h1>
                             <div class="column">
                             <c:forEach items="${bookList.getRandom()}" var="book">
-                                <img src="images/${book.getCoverImage()}" style="max-height: 200px; max-width: 250px;">
+                                <img src="images/${book.getCoverImage()}" style="max-height: 250px; max-width: 200px;">
                             </c:forEach>
                         </div>
                     </center>

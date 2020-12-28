@@ -126,7 +126,7 @@ public final class header_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                                </select>\n");
       out.write("                            </div>\n");
       out.write("                        </form>\n");
-      out.write("                        <ul class=\"nav navbar-nav navbar-right\">\n");
+      out.write("                            <ul class=\"nav navbar-nav navbar-right\">\n");
       out.write("                            <li class=\"dropdown\">\n");
       out.write("                                <a href=\"\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">Account<span class=\"caret\"></span></a>\n");
       out.write("                                <ul class=\"dropdown-menu\">\n");
@@ -150,7 +150,7 @@ public final class header_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                <div class=\"text\">\n");
       out.write("                    Side Menu</div>\n");
       out.write("                <ul>\n");
-      out.write("                    <li class=\"active\"><a href=\"#\">Dashboard</a></li>\n");
+      out.write("                    <li class=\"active\"><a href=\"AllBook.jsp\">All Book</a></li>\n");
       out.write("                    <li>\n");
       out.write("                        <a href=\"#\" class=\"feat-btn\">Category\n");
       out.write("                            <span class=\"fas fa-caret-down first\"></span>\n");
@@ -174,19 +174,6 @@ public final class header_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("                        </ul>\n");
       out.write("                    </li>\n");
-      out.write("                    <li>\n");
-      out.write("                        <a href=\"#\" class=\"serv-btn\">Services\n");
-      out.write("                            <span class=\"fas fa-caret-down second\"></span>\n");
-      out.write("                        </a>\n");
-      out.write("                        <ul class=\"serv-show\">\n");
-      out.write("                            <li><a href=\"#\">App Design</a></li>\n");
-      out.write("                            <li><a href=\"#\">Web Design</a></li>\n");
-      out.write("                        </ul>\n");
-      out.write("                    </li>\n");
-      out.write("                    <li><a href=\"#\">Portfolio</a></li>\n");
-      out.write("                    <li><a href=\"#\">Overview</a></li>\n");
-      out.write("                    <li><a href=\"#\">Shortcuts</a></li>\n");
-      out.write("                    <li><a href=\"#\">Feedback</a></li>\n");
       out.write("                </ul>\n");
       out.write("            </nav>\n");
       out.write("            <script>\n");
@@ -207,7 +194,14 @@ public final class header_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                });\n");
       out.write("            </script>\n");
       out.write("        </header>\n");
-      out.write("\n");
+      out.write("        <script type=\"text/javascript\">\n");
+      out.write("            $(document).ready(function () {\n");
+      out.write("                $('.carousel').carousel({\n");
+      out.write("                    interval: 500\n");
+      out.write("                })\n");
+      out.write("            });\n");
+      out.write("            var dropdownOpen = document.\n");
+      out.write("        </script>\n");
       out.write("    </body>\n");
       out.write("</html>\n");
     } catch (Throwable t) {
@@ -240,7 +234,10 @@ public final class header_jsp extends org.apache.jasper.runtime.HttpJspBase
         do {
           out.write("\n");
           out.write("\n");
-          out.write("                                <li><a href=\"#\">");
+          out.write("                                <li><a href=\"SearchCategory?categoryName=");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${category.getCategoryName()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write('"');
+          out.write('>');
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${category.getCategoryName()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
           out.write("</a></li>\n");
           out.write("                                ");
