@@ -315,8 +315,6 @@ public class BookDAO implements DAO<BookBean> {
     }
     
     
-    
-    
 
 //    public List<BookBean> getBooksList() throws Exception {
 //        String query = "select * from Books";
